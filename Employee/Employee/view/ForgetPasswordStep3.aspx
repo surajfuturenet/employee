@@ -23,24 +23,18 @@
                 <h1>
                     Account Help
                 </h1>
-                <span> Step 2 - Answer at least 2 questions</span>
+                <span> Step 3</span>
             </div>
             <div class="content">
                 <div class="header2">
-                    <span>question 1</span>
+                    <span>Enter the PIN Nomber which we sent your Mail</span>
                 </div>
-                <input name="user_name" type="text" class="input username" value="answer" onfocus="this.value=''" />
-                <div class="header2">
-                    <span>question 2</span>
-                </div>
-                <input name="user_name" type="text" class="input username" value="answer" onfocus="this.value=''" />
-                <div class="header2">
-                    <span>question 3</span>
-                </div>
-                <input name="user_name" type="text" class="input username" value="answer" onfocus="this.value=''" />
+                <input name="user_name" type="text" class="input username" value="PIN Nomber" onfocus="this.value=''" />
             </div>
             <div class="footer">
                 <input type="submit" name="submit" value="Next" class="button" />
+                <input type="button" name="Resend" value="Resend Mail" class="button2" />
+                
             </div>
         </form>
     </div>
