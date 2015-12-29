@@ -1,6 +1,10 @@
-﻿<!DOCTYPE>
-<html>
-<head>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employee.aspx.cs" Inherits="Employee.Employee" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
 
     <!--META-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,7 +22,7 @@
 
     <div id="wrapper">
 
-        <form name="login-form" class="login-form" action="" method="post">
+        <form name="login-form" class="login-form" id="form1" runat="server">
 
             <div class="header">
                 <h1>
@@ -29,10 +33,10 @@
 
             <div class="content">
                 <input name="password" type="text" class="input username" value="password" onfocus="this.value=''" />
-                <input name="confirm_password" type="text" class="input password" value="confirm_Password" onfocus="this.value=''" />
+                <input name="confirm_password" type="text" class="input password" value="confirm Password" onfocus="this.value=''" />
             </div>
             <div class="footer">
-                <input type="submit" name="submit" value="ResetPassword" class="button" />
+                <input type="submit" name="submit" value="Reset Password" class="button" />
             </div>
         </form>
     </div>
