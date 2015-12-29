@@ -1,13 +1,15 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="Employee.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
     <link rel="stylesheet" type="text/css" href="\CSS\Login.css">
     <title></title>
-	<meta charset="utf-8" />
 </head>
 <body>
     <div id="login_form">
-        <form name="f1" method="post" action="login.php" id="f1">
+        <form id="form1" runat="server">
             <table>
                 <tr>
                     <td class="f1_label">User Name :</td>
