@@ -35,7 +35,7 @@
                 <input name="confirm_password" type="text" class="input password" value="confirm Password" onfocus="this.value=''" />
             </div>
             <div class="footer">
-                <input type="submit" name="submit" value="ResetPassword" class="button" />
+                <input type="submit" name="submit" value="Reset Password" class="button" />
             </div>
         </form>
     </div>
