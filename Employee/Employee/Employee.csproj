@@ -106,13 +106,9 @@
     </Content>
     <Content Include="view\AdminProfile.aspx" />
     <Content Include="view\EmailVerification.aspx" />
-    <Content Include="view\EmailVerify.aspx" />
     <Content Include="view\ForgetPasswordStep1.aspx" />
     <Content Include="view\ForgetPasswordStep2.aspx" />
     <Content Include="view\ForgetPasswordStep3.aspx" />
-    <Content Include="view\ForgotPasswordStepOne.aspx" />
-    <Content Include="view\ForgotPasswordStepThree.aspx" />
-    <Content Include="view\ForgotPasswordStepTwo.aspx" />
     <Content Include="view\Login.aspx" />
     <Content Include="view\Profile.aspx" />
     <Content Include="view\ResetPassword.aspx" />
@@ -154,12 +150,6 @@
     <Compile Include="view\EmailVerification.aspx.designer.cs">
       <DependentUpon>EmailVerification.aspx</DependentUpon>
     </Compile>
-    <Compile Include="view\EmailVerify.aspx.cs">
-      <DependentUpon>EmailVerify.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\EmailVerify.aspx.designer.cs">
-      <DependentUpon>EmailVerify.aspx</DependentUpon>
-    </Compile>
     <Compile Include="view\ForgetPasswordStep1.aspx.cs">
       <DependentUpon>ForgetPasswordStep1.aspx</DependentUpon>
     </Compile>
@@ -177,24 +167,6 @@
     </Compile>
     <Compile Include="view\ForgetPasswordStep3.aspx.designer.cs">
       <DependentUpon>ForgetPasswordStep3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\ForgotPasswordStepOne.aspx.cs">
-      <DependentUpon>ForgotPasswordStepOne.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\ForgotPasswordStepOne.aspx.designer.cs">
-      <DependentUpon>ForgotPasswordStepOne.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\ForgotPasswordStepThree.aspx.cs">
-      <DependentUpon>ForgotPasswordStepThree.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\ForgotPasswordStepThree.aspx.designer.cs">
-      <DependentUpon>ForgotPasswordStepThree.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\ForgotPasswordStepTwo.aspx.cs">
-      <DependentUpon>ForgotPasswordStepTwo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="view\ForgotPasswordStepTwo.aspx.designer.cs">
-      <DependentUpon>ForgotPasswordStepTwo.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
