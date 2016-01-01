@@ -27,18 +27,22 @@
                 <div class="header2">
                     <span>question 1</span>
                 </div>
-                <input name="user_name" type="text" class="input username" value="answer" onfocus="this.value=''" />
+                
+                <asp:TextBox ID="TextBox1" runat="server" class="input username" value="answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
                 <div class="header2">
                     <span>question 2</span>
                 </div>
-                <input name="user_name" type="text" class="input username" value="answer" onfocus="this.value=''" />
+                <asp:TextBox ID="TextBox2" runat="server" class="input username" value="answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
                 <div class="header2">
                     <span>question 3</span>
                 </div>
-                <input name="user_name" type="text" class="input username" value="answer" onfocus="this.value=''" />
+                <asp:TextBox ID="TextBox3" runat="server" class="input username" value="answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
             </div>
             <div class="footer">
-                <input type="submit" name="submit" value="Next" class="button" />
+                <asp:Button ID="Button1" runat="server" Text="Next" class="button" />
             </div>
         </form>
     </div>

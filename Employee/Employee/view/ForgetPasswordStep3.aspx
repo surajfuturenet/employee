@@ -23,15 +23,17 @@
                 </h1>
                 <span> Step 3</span>
             </div>
-            <div class="content">
+            <div class="content" runat="server">
                 <div class="header2">
                     <span>Enter the PIN Nomber which we sent your Mail</span>
                 </div>
-                <input name="user_name" type="text" class="input username" value="PIN Nomber" onfocus="this.value=''" />
+                <asp:TextBox ID="TextBox1" runat="server" class="input username" value="PIN Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
             </div>
-            <div class="footer">
-                <input type="submit" name="submit" value="Next" class="button" />
-                <input type="button" name="Resend" value="Resend Mail" class="button2" />
+            <div class="footer" runat="server">
+                
+                <asp:Button ID="submit" runat="server" name="submit" Text="Next" class="button" />
+                <asp:Button ID="button" runat="server" name="Resend" Text="Resend Mail" class="button2" />
                 
             </div>
         </form>

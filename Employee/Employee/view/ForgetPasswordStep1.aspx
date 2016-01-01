@@ -24,11 +24,13 @@
                 <span>Step 1</span>
             </div>
             <div class="content">
-                <input name="user_name" type="text" class="input username" value="user name" onfocus="this.value=''" />
-                <input name="email" type="text" class="input password" value="email" onfocus="this.value=''" />
+                <asp:TextBox ID="user_name" runat="server" class="input username" value="user name" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
+                <asp:TextBox ID="email" runat="server" class="input password" value="email" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
             </div>
-            <div class="footer">
-                <input type="submit" name="submit" value="Next" class="button" />
+            <div class="footer" runat="server">
+                <asp:Button ID="submit" runat="server" Text="Next" class="button" />
             </div>
         </form>
     </div>
