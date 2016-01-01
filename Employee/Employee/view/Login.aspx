@@ -14,7 +14,7 @@
 <link href="/CSS/Login.css" rel="stylesheet" type="text/css" />
 
 <!--SCRIPTS-->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery.min.js"></script>
 <!--Slider-in icons-->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -34,6 +34,16 @@ $(document).ready(function() {
 });
 </script>
 
+    <script type="text/javascript">
+function CapsLock(e){
+ kc = e.keyCode?e.keyCode:e.which;
+ sk = e.shiftKey?e.shiftKey:((kc == 16)?true:false);
+ if(((kc >= 65 && kc <= 90) && !sk)||((kc >= 97 && kc <= 122) && sk))
+     document.getElementById('capslock').style.visibility = 'visible';
+ else
+     document.getElementById('capslock').style.visibility = 'hidden';
+}
+</script>
 </head>
 <body>
 
@@ -46,7 +56,7 @@ $(document).ready(function() {
     <!--END SLIDE-IN ICONS-->
 
 <!--LOGIN FORM-->
-<form name="login-form" class="login-form" action="" method="post">
+<form name="login-form" runat="server" class="login-form"  method="post">
 
 	<!--HEADER-->
     <div class="header">
@@ -62,16 +72,24 @@ $(document).ready(function() {
 	
 	<!--CONTENT-->
     <div class="content">
-	<!--USERNAME--><input name="username" type="text" class="input username" value="Username" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" /><!--END USERNAME-->
-    <!--PASSWORD--><input name="password" type="password" class="input password" value="Password" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" /><!--END PASSWORD-->
+	<!--USERNAME--><asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+        
+        <!--END USERNAME-->
+    <!--PASSWORD--> <asp:TextBox runat ="server" type="password" class="input password" value="Password" onkeypress="CapsLock(event)" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END PASSWORD-->
+    <div id="capslock" style="visibility:hidden">
+        
+       
+        <span>Caps Lock is on.</span></div> 
     </div>
     <!--END CONTENT-->
     
     <!--FOOTER-->
     <div class="footer">
-    <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
+    <!--LOGIN BUTTON-->
+        <asp:Button id="login" Text="Login" class="button" runat="server" />
+        <!--END LOGIN BUTTON-->
 	    <!--FORGET PASSWORD--><a href="#" class="forgotpassword" >Forgot your password?</a><!--END FORGET PASSWORD-->
     </div>
     <!--END FOOTER-->
@@ -85,4 +103,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" /><!--END PASSWORD--
 <!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
 
 </body>
+
+    
 </html>
+
