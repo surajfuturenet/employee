@@ -92,7 +92,7 @@ LOGIN FORM
 *******************/
 
 .profile-form {
-	width: 400px;
+	width: 630px;
 	margin: 0 auto;
 	position: relative;
 	z-index:5;
@@ -126,7 +126,7 @@ HEADER
 }
 
 .profile-form .header span {
-	font-size: 11px;
+	font-size: 25px;
 	line-height: 16px;
 	color: #678889;
 	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
@@ -138,11 +138,12 @@ CONTENT
 
 .profile-form .content {
 	padding: 0 30px 25px 30px;
+    height: 190px;
 }
 
 /* Label */
 
-    .profile-form .content .label {
+    .profile-form .content span {
         font-family: 'Bree Serif', serif;
     font-weight: 300;
     font-size: 17px;
@@ -152,7 +153,7 @@ CONTENT
     }
 
 /* Input field */
-.profile-form .content .input {
+.profile-form .content .input  {
 	width: 250px;
 	padding: 15px 25px;
 	
@@ -239,7 +240,7 @@ FOOTER
 .profile-form .footer {
 	padding: 25px 30px 40px 30px;
 	overflow: auto;
-	
+	clear:both;
 	background: #d4dedf;
 	border-top: 1px solid #fff;
 	
@@ -252,7 +253,7 @@ FOOTER
 .profile-form .footer .button {
 	float:right;
 	padding: 11px 25px;
-	
+	margin:10px;
 	font-family: 'Bree Serif', serif;
 	font-weight: 300;
 	font-size: 18px;
@@ -318,9 +319,11 @@ FOOTER
 
 .leftside {
     float:left;
+    width:300px;
 }
 
 .rightside {
     float:left;
+    width:260px;
 }
 
