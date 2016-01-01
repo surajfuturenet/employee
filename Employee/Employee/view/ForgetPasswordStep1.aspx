@@ -1,18 +1,18 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employee.aspx.cs" Inherits="Employee.Employee" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgetPasswordStep1.aspx.cs" Inherits="Employee.view.ForgetPasswordStep1" %>
 
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Forget Password Step 1 Form</title>
+     <!--META-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Forget Password Step 3 Form</title>
 
     <!--STYLESHEETS-->
     <link href="/CSS/ResetPassword.css" rel="stylesheet" type="text/css" />
 
     <!--SCRIPTS-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-
 </head>
 <body>
     <div id="wrapper">
@@ -24,11 +24,13 @@
                 <span>Step 1</span>
             </div>
             <div class="content">
-                <input name="user_name" type="text" class="input username" value="user name" onfocus="this.value=''" />
-                <input name="email" type="text" class="input password" value="email" onfocus="this.value=''" />
+                <asp:TextBox ID="user_name" runat="server" class="input username" value="user name" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
+                <asp:TextBox ID="email" runat="server" class="input password" value="email" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
             </div>
-            <div class="footer">
-                <input type="submit" name="submit" value="Next" class="button" />
+            <div class="footer" runat="server">
+                <asp:Button ID="submit" runat="server" Text="Next" class="button" />
             </div>
         </form>
     </div>

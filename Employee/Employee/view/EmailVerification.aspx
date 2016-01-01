@@ -1,23 +1,21 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employee.aspx.cs" Inherits="Employee.Employee" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EmailVerification.aspx.cs" Inherits="Employee.view.EmailVerification" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-    <!--META-->
+     <!--META-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Verify Email Form</title>
+    <title>Forget Password Step 3 Form</title>
 
     <!--STYLESHEETS-->
     <link href="/CSS/ResetPassword.css" rel="stylesheet" type="text/css" />
 
     <!--SCRIPTS-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-
 </head>
 <body>
-    <div id="wrapper">
+     <div id="wrapper">
         <form name="login-form" class="login-form" id="form1" runat="server">
             <div class="header">
                 <h1>
@@ -28,11 +26,12 @@
                 <div class="header2">
                     <span>Enter the PIN Nomber which we sent your Mail</span>
                 </div>
-                <input name="user_name" type="text" class="input username" value="PIN Nomber" onfocus="this.value=''" />
+                <asp:TextBox ID="user_name" runat="server" class="input username" value="PIN Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue"  />
             </div>
             <div class="footer">
-                <input type="submit" name="submit" value="Next" class="button" />
-                <input type="button" name="Resend" value="Resend Mail" class="button2" />
+                <asp:Button ID="submit" runat="server" Text="Next" class="button" />
+                <asp:Button ID="button" runat="server"  Text="Resend Mail" class="button2" />
                 
             </div>
         </form>

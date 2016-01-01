@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Employee.view
 {
-    public partial class UserManagement : System.Web.UI.Page
+    public partial class ForgetPasswordStep2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

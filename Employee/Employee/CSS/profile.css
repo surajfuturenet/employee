@@ -126,7 +126,7 @@ HEADER
 }
 
 .profile-form .header span {
-	font-size: 25px;
+	font-size: 11px;
 	line-height: 16px;
 	color: #678889;
 	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
@@ -142,7 +142,7 @@ CONTENT
 
 /* Label */
 
-    .profile-form .content span{
+    .profile-form .content .label {
         font-family: 'Bree Serif', serif;
     font-weight: 300;
     font-size: 17px;

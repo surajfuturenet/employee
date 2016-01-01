@@ -10,9 +10,9 @@
 <!--META-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <link rel="stylesheet" href="/CSS/bootstrap.min.css" />
-  <script src="/scripts/jquery.min.js"></script>
-  <script src="/scripts/bootstrap.min.js"></script>
+  <link href="/CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <title>Profile</title>
 
 <!--STYLESHEETS-->
@@ -20,7 +20,7 @@
  
 
 <!--SCRIPTS-->
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
 <!--Slider-in icons-->
 <script type="text/javascript">
 $(document).ready(function() {
@@ -37,11 +37,11 @@ $(document).ready(function() {
 	
 
 <!--LOGIN FORM-->
-<form name="profile-form" runat="server" class="profile-form"  method="post">
+<form name="profile-form" class="profile-form" action="" method="post">
 
 	<!--HEADER-->
     <div class="header">
-    <!--TITLE--><h1><asp:Label runat="server" ID="User"></asp:Label>
+    <!--TITLE--><h1>User Name
 		
 	</h1><!--END TITLE-->
 	    
@@ -64,39 +64,30 @@ $(document).ready(function() {
 	
 
 	<!--USERNAME-->
-        <asp:Label runat="server" ID="UserName"></asp:Label><br />
-     
-        <asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
-          <!--END USERNAME-->
+        <label for="username" class="label">User Name</label>
+        <input name="username" type="text" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" /><!--END USERNAME-->
 	<br />
 	<!--FIRSTNAME-->
-        <asp:Label runat="server" ID="FirstName"></asp:Label><br />
-        
-         <asp:TextBox runat="server" id="FnameTextBox" class="input firstname" value="First Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
-        <!--END FIRSTNAME-->
+        <label for="firstname" class="label" >First Name</label>
+        <input name="firstname" type="text" class="input firstname" value="First Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" /><!--END FIRSTNAME-->
         <br />
     <!--LASTNAME-->
-       <asp:Label runat="server" ID="LastName"></asp:Label><br />
-       <asp:TextBox runat="server" id="LnameTextBox" class="input lastname" value="Last Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
-        <!--END LASTNAME-->
+        <label for="lastname" class="label">Last Name</label>
+        <input name="lastname" type="text" class="input lastname" value="Last Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" /><!--END LASTNAME-->
 	<br />
 	
 	<!--PASSWORD-->
-       <asp:Label runat="server" ID="Password"></asp:Label><br />
-       <asp:TextBox runat="server" id="PaswordTextBox" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" ></asp:TextBox>
-        
-        <!--END PASSWORD-->
+        <label for="password" class="label">Password</label>
+        <input name="password" type="text" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" /><!--END PASSWORD-->
         <br />
 	<!--CONTACT NUMBER-->
-        <asp:Label runat="server" ID="ContactNumber"></asp:Label><br />
-               
-        <asp:TextBox runat="server" id="CnumberTextBox" class="input contact" value="Contact Number" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
-        <!--CONTACT NUMBER-->
+        <label for="contact" class="label">Contact Number</label>
+        <input name="contact" type="text" class="input contact" value="Contact Number" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" /><!--CONTACT NUMBER-->
 	<br />
 	
     </div>
@@ -106,9 +97,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
     
     <!--FOOTER-->
     <div class="footer">
-    <!--SIGNIN BUTTON-->
-        <asp:Button id="update" Text="Update" class="button" runat="server" />
-        <!--END SIGNIN BUTTON-->
+    <!--SIGNIN BUTTON--><input type="submit" name="submit" value="Update" class="button" /><!--END SIGNIN BUTTON-->
 	    
     </div>
     <!--END FOOTER-->

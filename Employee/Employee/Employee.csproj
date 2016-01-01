@@ -94,11 +94,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\usermanagement.css" />
-    <Content Include="CSS\bootstrap.min.css" />
-    <Content Include="CSS\profile.css" />
-    <Content Include="CSS\updateuser.css" />
-    <Content Include="CSS\signup.css" />
     <Content Include="CSS\ResetPassword.css" />
     <Content Include="Employee.aspx" />
     <Content Include="Images\bg.png" />
@@ -109,14 +104,18 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="scripts\jquery.min.js" />
-    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="view\AdminProfile.aspx" />
-    <Content Include="view\Profile.aspx" />
-    <Content Include="view\Signup.aspx" />
+    <Content Include="view\EmailVerification.aspx" />
+    <Content Include="view\ForgetPasswordStep1.aspx" />
+    <Content Include="view\ForgetPasswordStep2.aspx" />
+    <Content Include="view\ForgetPasswordStep3.aspx" />
     <Content Include="view\Login.aspx" />
+    <Content Include="view\Profile.aspx" />
+    <Content Include="view\ResetPassword.aspx" />
+    <Content Include="view\Signup.aspx" />
     <Content Include="view\updateUser.aspx" />
     <Content Include="view\UserManagement.aspx" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -128,13 +127,6 @@
     <Content Include="CSS\Login.css" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="view\EmailVerification.html" />
-    <Content Include="view\ForgetPasswordStep1.html" />
-    <Content Include="view\ForgetPasswordStep2.html" />
-    <Content Include="view\ForgetPasswordStep3.html" />
-    <Content Include="view\ResetPassword.html" />
-    <Content Include="view\UserLogin.html" />
-    <Content Include="view\WebForm4.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -153,19 +145,33 @@
     <Compile Include="view\AdminProfile.aspx.designer.cs">
       <DependentUpon>AdminProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="view\Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="view\EmailVerification.aspx.cs">
+      <DependentUpon>EmailVerification.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="view\Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="view\EmailVerification.aspx.designer.cs">
+      <DependentUpon>EmailVerification.aspx</DependentUpon>
     </Compile>
-    <Compile Include="view\Signup.aspx.cs">
-      <DependentUpon>Signup.aspx</DependentUpon>
+    <Compile Include="view\ForgetPasswordStep1.aspx.cs">
+      <DependentUpon>ForgetPasswordStep1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="view\Signup.aspx.designer.cs">
-      <DependentUpon>Signup.aspx</DependentUpon>
+    <Compile Include="view\ForgetPasswordStep1.aspx.designer.cs">
+      <DependentUpon>ForgetPasswordStep1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForgetPasswordStep2.aspx.cs">
+      <DependentUpon>ForgetPasswordStep2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\ForgetPasswordStep2.aspx.designer.cs">
+      <DependentUpon>ForgetPasswordStep2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForgetPasswordStep3.aspx.cs">
+      <DependentUpon>ForgetPasswordStep3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\ForgetPasswordStep3.aspx.designer.cs">
+      <DependentUpon>ForgetPasswordStep3.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -173,6 +179,27 @@
     </Compile>
     <Compile Include="view\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\updateUser.aspx.cs">
       <DependentUpon>updateUser.aspx</DependentUpon>
@@ -188,13 +215,16 @@
     <Compile Include="view\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="view\WebForm4.aspx.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="view\WebForm4.aspx.designer.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

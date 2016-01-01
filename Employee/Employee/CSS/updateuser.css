@@ -136,7 +136,7 @@ CONTENT
 
 /* Label */
 
-    .updateuser-form .content span {
+    .updateuser-form .content .label {
         font-family: 'Bree Serif', serif;
     font-weight: 300;
     font-size: 17px;
