@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Employee {
+namespace Employee.view {
     
     
-    public partial class Employee {
+    public partial class WebForm1 {
+        
+        /// <summary>
+        /// CheckCorrect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CheckCorrect;
         
         /// <summary>
         /// UnameTextBox control.
@@ -40,6 +49,15 @@ namespace Employee {
         protected global::System.Web.UI.WebControls.TextBox LnameTextBox;
         
         /// <summary>
+        /// Email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Email;
+        
+        /// <summary>
         /// PaswordTextBox control.
         /// </summary>
         /// <remarks>
@@ -58,21 +76,21 @@ namespace Employee {
         protected global::System.Web.UI.WebControls.TextBox CPaswordTextBox;
         
         /// <summary>
-        /// UserRole control.
+        /// ContactNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList UserRole;
+        protected global::System.Web.UI.WebControls.TextBox ContactNo;
         
         /// <summary>
-        /// login control.
+        /// sign control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button login;
+        protected global::System.Web.UI.WebControls.Button sign;
     }
 }

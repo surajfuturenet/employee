@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="Employee.Employee" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="Employee.view.WebForm1" %>
 
 <!DOCTYPE html>
 
@@ -32,22 +32,16 @@ $(document).ready(function() {
 	
 
 <!--LOGIN FORM-->
-<form name="signup-form" runat="server" class="signup-form" action="" method="post">
+<form name="signup-form" runat="server" class="signup-form" method="post">
 
 	<!--HEADER-->
     <div class="header">
-    <!--TITLE--><h1>Create Account
-		
-	</h1><!--END TITLE-->
-	    
-
-		
+    <h1>Create Account</h1>
     <!--DESCRIPTION--><span>Fill out the form below to sign up.</span><!--END DESCRIPTION-->
     </div>
-    <!--END HEADER-->
-	
-	<!--CONTENT-->
+
     <div class="content">
+        <asp:Label ID="CheckCorrect" runat="server" Text="Label"></asp:Label>
 	
 	<!--USERNAME--><asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
@@ -60,7 +54,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--E
     <!--LASTNAME--> <asp:TextBox runat="server" id="LnameTextBox" class="input lastname" value="Last Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END LASTNAME-->
 	
-	 <!--EMAIL--><input name="email" type="text" class="input email" value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
+	 <!--EMAIL--><asp:TextBox runat="server" id="Email" name="email" type="text" class="input email" value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" /><!--END EMAIL-->
 	
 	<!--PASSWORD--><asp:TextBox runat="server" id="PaswordTextBox" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
@@ -68,11 +62,14 @@ onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('t
 
 	<!--CONFIRMPASSWORD--><asp:TextBox runat="server" id="CPaswordTextBox" class="input password" value="Confirm Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" ></asp:TextBox><!--END CONFIRMPASSWORD-->
+
+        <!--CONTACT--> <asp:TextBox runat="server" id="ContactNo" class="input lastname" value="Contact Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
+onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END Contact-->
 	
-	<!--USER ROLE--><asp:DropDownList class="input userrole" runat="server" ID="UserRole">
+	<%--<!--USER ROLE--><asp:DropDownList class="input userrole" runat="server" ID="UserRole">
                 <asp:ListItem class="input" Value="admin">Admin</asp:ListItem>       
                 <asp:ListItem class="input" Value="user">User</asp:ListItem>  
-            </asp:DropDownList><!--USER ROLE-->
+            </asp:DropDownList><!--USER ROLE-->--%>
     </div>
 	
 	
@@ -80,7 +77,7 @@ onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('t
     
     <!--FOOTER-->
     <div class="footer">
-    <!--SIGNUP BUTTON--><asp:Button id="login" Text="Create Account" class="button" runat="server" /><!--END SIGNUP BUTTON-->
+    <asp:Button id="sign" Text="Create Account" class="button" runat="server" OnClick="sign_Click" />
 	    
     </div>
     <!--END FOOTER-->
