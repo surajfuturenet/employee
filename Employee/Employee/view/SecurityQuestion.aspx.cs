@@ -6,27 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using Employee.Controller;
 
 namespace Employee.view
 {
     public partial class SecurityQuestion : System.Web.UI.Page
     {
 
-        protected SqlConnection dbconnect()
-        {
-            SqlConnection con = new SqlConnection(@"Server = IRFAN\SQLEXPRESS; Database = EmployeeDB; User ID = tfn; password = tfn123; ");
-
-            try
-            {
-                con.Open();
-            }
-            catch (Exception)
-            {
-                error.Text = "Connection failed";
-            }
-            return con;
-
-        }
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,8 +29,12 @@ namespace Employee.view
                 Answer1.ReadOnly = true;
                 Answer2.ReadOnly = true;
                 Answer3.ReadOnly = true;
-                SqlConnection con = dbconnect();
-            SqlCommand cmd = con.CreateCommand();
+
+
+                DBConnection DBcon = new DBConnection();
+                SqlConnection con = DBcon.CreateConnection();
+
+                SqlCommand cmd = con.CreateCommand();
             cmd.CommandText = "SELECT q_id, question FROM SequrityQuestion";
 
             try
@@ -65,11 +56,11 @@ namespace Employee.view
                 catch(Exception ex) {
                     error.Text= ex.ToString();
                 }
-            
-            
-            
-            
-                con.Close();
+
+
+
+
+                DBcon.CloseConnection();
                 //============== End of Page load code ===================
             }
            
@@ -79,7 +70,10 @@ namespace Employee.view
 
         protected void SQuestion_Click(object sender, EventArgs e)
         {
-            SqlConnection con = dbconnect();
+           
+
+            DBConnection DBcon = new DBConnection();
+            SqlConnection con = DBcon.CreateConnection();
 
             int UID = 2; // User id hardcoded
 
@@ -102,7 +96,7 @@ namespace Employee.view
 
 
 
-            con.Close();
+            DBcon.CloseConnection();
 
 
 
