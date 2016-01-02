@@ -37,12 +37,14 @@ $(document).ready(function() {
 	<!--HEADER-->
     <div class="header">
     <h1>Create Account</h1>
-    <!--DESCRIPTION--><span>Fill out the form below to sign up.</span><!--END DESCRIPTION-->
+    <!--DESCRIPTION--><span>Fill out the form below to sign up.</span><!--END DESCRIPTION--></br>
+        
     </div>
-
+    <div class="headerRed">
+        <span><asp:Label ID="CheckCorrect" runat="server" Text="Label"></asp:Label></span>
+    </div>
     <div class="content">
-        <asp:Label ID="CheckCorrect" runat="server" Text="Label"></asp:Label>
-	
+
 	<!--USERNAME--><asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         
