@@ -37,10 +37,8 @@ $(document).ready(function() {
 	<!--HEADER-->
     <div class="header">
     <h1>Create Account</h1>
-    <!--DESCRIPTION--><span>Fill out the form below to sign up.</span><!--END DESCRIPTION--></br>
-        
-    </div>
-    <div class="headerRed">
+    <!--DESCRIPTION--><span>Fill out the form below to sign up.</span><!--END DESCRIPTION-->
+ <br />
         <span><asp:Label ID="CheckCorrect" runat="server" Text="Label"></asp:Label></span>
     </div>
     <div class="content">
