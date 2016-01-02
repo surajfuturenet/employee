@@ -24,9 +24,11 @@ BODY STYLING
 *******************/
 
 * {
-	margin: 0;
-	padding: 0;
-	border: 0;
+	border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    margin: 0 0 0 0px;
+    padding: 0;
 }
 
 body {
@@ -62,25 +64,20 @@ a{
 
 .gradient {
 	/* Center Positioning */
-	width: 600px;
-	height: 600px;
+	width: 106px;
+	height: 625px;
 	position: fixed;
-	left: 50%;
-	top: 50%;
+	left: 51%;
+	top: 29%;
 	margin-left: -300px;
 	margin-top: -300px;
 	
 	/* Fallback */ 
-	background-image: url(../images/gradient.png); 
 	background-repeat: no-repeat; 
 	
 	/* CSS3 Gradient */
-	background-image: -webkit-gradient(radial, 0% 0%, 0% 100%, from(rgba(213,246,255,1)), to(rgba(213,246,255,0)));
-	background-image: -webkit-radial-gradient(50% 50%, 40% 40%, rgba(213,246,255,1), rgba(213,246,255,0));
-	background-image: -moz-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-	background-image: -ms-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
 	background-image: -o-radial-gradient(50% 50%, 50% 50%, rgba(213,246,255,1), rgba(213,246,255,0));
-}
+	}
 
 /*******************
 LOGIN FORM
@@ -107,6 +104,7 @@ HEADER
 
 .signup-form .header {
 	padding: 40px 30px 30px 30px;
+    height: 43px;
 }
 
 .signup-form .header h1 {
@@ -138,7 +136,7 @@ CONTENT
 .signup-form .content .input {
 	width: 250px;
 	padding: 15px 25px;
-	
+	margin-top: 10px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 400;
 	font-size: 14px;
@@ -221,7 +219,7 @@ FOOTER
 
 .signup-form .footer {
 	padding: 25px 30px 40px 30px;
-	overflow: auto;
+	
 	
 	background: #d4dedf;
 	border-top: 1px solid #fff;
@@ -229,6 +227,8 @@ FOOTER
 	box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
 	-moz-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
 	-webkit-box-shadow: inset 0 1px 0 rgba(0,0,0,0.15);
+    height: 35px;
+    width: 341px;
 }
 
 /* Login button */
@@ -297,4 +297,8 @@ FOOTER
 .signup-form .footer .register:focus {
 	position: relative;
 	bottom: -1px;
+}
+#error {
+    color:red;
+
 }
