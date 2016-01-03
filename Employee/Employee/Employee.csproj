@@ -94,7 +94,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\profile.css" />
     <Content Include="CSS\ResetPassword.css" />
+    <Content Include="CSS\signup.css" />
+    <Content Include="CSS\updateuser.css" />
+    <Content Include="CSS\usermanagement.css" />
     <Content Include="Employee.aspx" />
     <Content Include="Images\bg.png" />
     <Content Include="Images\gradient.png" />
@@ -115,7 +120,6 @@
     <Content Include="view\Signup.aspx" />
     <Content Include="view\updateUser.aspx" />
     <Content Include="view\UserManagement.aspx" />
-    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -130,6 +134,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DBConnection.cs" />
     <Compile Include="Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,13 +219,6 @@
     </Compile>
     <Compile Include="view\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
