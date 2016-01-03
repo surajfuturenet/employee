@@ -63,10 +63,8 @@ function CapsLock(e){
     <!--TITLE--><h1>Login Form
 		<!--REGISTER BUTTON--><a href="#"  class="register" >Register Now</a><!--END REGISTER BUTTON-->
 	</h1><!--END TITLE-->
-	    
-
-				
-    <!--DESCRIPTION--><span>Fill out the form below to login.</span><!--END DESCRIPTION-->
+	    			
+    <!--DESCRIPTION--><span>Fill out the form below to login.</br><asp:Label ID="AuthenticateLabel" runat="server"></asp:Label></span><!--END DESCRIPTION-->
     </div>
     <!--END HEADER-->
 	
