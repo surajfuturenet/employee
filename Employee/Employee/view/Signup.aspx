@@ -35,7 +35,7 @@
 
 		
     <!--DESCRIPTION--><span>Fill out the form below to sign up.</span>
-        </br><asp:Label ID="CheckCorrect" runat="server" Text="Label"></asp:Label><!--END DESCRIPTION-->
+        </br><asp:Label ID="CheckCorrect" runat="server"></asp:Label><!--END DESCRIPTION-->
     </div>
     <!--END HEADER-->
 	
