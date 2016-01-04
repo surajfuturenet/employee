@@ -87,6 +87,7 @@ function CapsLockCPassword(e) {
 	<!--CONFIRMPASSWORD-->
         <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="PaswordTextBox" ErrorMessage="Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&amp;? &quot;" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&amp;? &quot;]).*$"></asp:RegularExpressionValidator>
         <asp:TextBox runat="server" id="CPaswordTextBox" class="input password" type="password" placeholder="Confirm Password" onkeypress="CapsLockCPassword(event)" ></asp:TextBox><!--END CONFIRMPASSWORD-->
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="CPaswordTextBox" ErrorMessage="Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&amp;? &quot;" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&amp;? &quot;]).*$"></asp:RegularExpressionValidator>
         <div id="capslock2" style="visibility:hidden">
         
        
