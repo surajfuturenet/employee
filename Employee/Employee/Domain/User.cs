@@ -457,8 +457,9 @@ namespace Employee.Domain
                         {
                             user = new User();
                             user.Email = reader["email"].ToString();
-
-                            UserList.Add(user);
+                            if (user.Email != "") {
+                                UserList.Add(user);
+                            }
                         }
                         return UserList;
 
