@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Employee.view {
-    
-    
-    public partial class SecurityQuestion {
-        
+namespace Employee.view
+{
+
+
+    public partial class SecurityQuestion
+    {
+
         /// <summary>
         /// error control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label error;
-        
+
         /// <summary>
         /// SQ1 control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList SQ1;
-        
+
         /// <summary>
         /// Answer1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Answer1;
-        
+
         /// <summary>
         /// SQ2 control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList SQ2;
-        
+
         /// <summary>
         /// Answer2 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Answer2;
-        
+
         /// <summary>
         /// SQ3 control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList SQ3;
-        
+
         /// <summary>
         /// Answer3 control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Answer3;
-        
+
         /// <summary>
         /// SQuestion control.
         /// </summary>
