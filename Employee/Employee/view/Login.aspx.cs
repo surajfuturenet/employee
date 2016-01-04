@@ -33,11 +33,11 @@ namespace Employee.view
             var hmacMD5 = new HMACMD5(salt);
             var saltedHash = hmacMD5.ComputeHash(passwordBits);
 
-            var storedPassword = GetExistingPassword(UnameTextBox.Text);
+            var userId = Athentication(userName, saltedHash);
 
         }
 
-        protected bool GetExistingPassword(string userName)
+        protected int Athentication(string userName,byte[] password)
         {
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
@@ -55,7 +55,7 @@ namespace Employee.view
                     checkAth.Direction = ParameterDirection.ReturnValue;
                     cmd.ExecuteNonQuery();
 
-                    bool checkAthentication = (bool)checkAth.Value;
+                    int checkAthentication = (int)checkAth.Value;
 
                     return checkAthentication;
                 }
