@@ -16,7 +16,7 @@
 <title>Profile</title>
 
 <!--STYLESHEETS-->
-<link href="/CSS/profile.css" rel="stylesheet" type="text/css" />
+<link href = "/CSS/profile.css" rel="stylesheet" type="text/css" />
  
 
 <!--SCRIPTS-->
@@ -41,8 +41,9 @@ $(document).ready(function() {
 
 	<!--HEADER-->
     <div class="header">
-    <!--TITLE--><h1><asp:Label runat="server" ID="User"></asp:Label>
+    <!--TITLE--><h1><asp:Label runat="server" ID="User"></asp:Label><br />
 		
+        <asp:Label runat="server" ID="error" class="error"></asp:Label>
 	</h1><!--END TITLE-->
 	    
 
@@ -66,8 +67,7 @@ $(document).ready(function() {
 	<!--USERNAME-->
         <asp:Label runat="server" ID="UserName"></asp:Label><br />
      
-        <asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+        <asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" ></asp:TextBox>
           <!--END USERNAME-->
 	<br />
 	<!--FIRSTNAME-->
@@ -83,21 +83,18 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         <!--END LASTNAME-->
 	<br />
-	
-	<!--PASSWORD-->
-       <asp:Label runat="server" ID="Password"></asp:Label><br />
-       <asp:TextBox runat="server" id="PaswordTextBox" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" ></asp:TextBox>
-        
-        <!--END PASSWORD-->
-        <br />
 	<!--CONTACT NUMBER-->
         <asp:Label runat="server" ID="ContactNumber"></asp:Label><br />
                
+        
+               
         <asp:TextBox runat="server" id="CnumberTextBox" class="input contact" value="Contact Number" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CnumberTextBox" ErrorMessage="Invalid Number" ValidationExpression="\(?\d{3}\)?-? *\d{3}-? *-?\d{4}" Font-Size="X-Small" ForeColor="Red"></asp:RegularExpressionValidator>
         <!--CONTACT NUMBER-->
 	<br />
+        <asp:Label runat="server" ID="Email" Text ="Email"></asp:Label><br />
+
+        <asp:TextBox runat="server" id="EmailTextBox" class="input email" value="Email" ></asp:TextBox>
 	
     </div>
 	
@@ -107,7 +104,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
     <!--FOOTER-->
     <div class="footer">
     <!--SIGNIN BUTTON-->
-        <asp:Button id="update" Text="Update" class="button" runat="server" />
+        <asp:Button id="update" Text="Update" class="button" runat="server" OnClick="update_Click" />
         <!--END SIGNIN BUTTON-->
 	    
     </div>
@@ -119,7 +116,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
 </div>
 <!--END WRAPPER-->
 
-<!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
+<!--GRADIENT--><!--END GRADIENT-->
 
 </body>
 </html>
