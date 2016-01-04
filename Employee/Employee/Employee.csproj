@@ -140,6 +140,7 @@
   <ItemGroup>
     <Compile Include="Controller\Email.cs" />
     <Compile Include="Controller\DBConnection.cs" />
+    <Compile Include="Domain\UserClass.cs" />
     <Compile Include="Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

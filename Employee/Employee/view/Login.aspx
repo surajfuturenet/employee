@@ -72,12 +72,10 @@ function CapsLock(e){
 	
 	<!--CONTENT-->
     <div class="content">
-	<!--USERNAME--><asp:TextBox runat="server" id="UnameTextBox" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+	<!--USERNAME--><asp:TextBox runat="server" id="UnameTextBox" class="input username" placeholder="User Name" ></asp:TextBox>
         
         <!--END USERNAME-->
-    <!--PASSWORD--> <asp:TextBox runat ="server" type="password" class="input password" value="Password" onkeypress="CapsLock(event)" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END PASSWORD-->
+    <!--PASSWORD--> <asp:TextBox runat ="server" id="Password" type="password" class="input password" placeholder="Password" onkeypress="CapsLock(event)"  ></asp:TextBox><!--END PASSWORD-->
     <div id="capslock" style="visibility:hidden">
         
        
@@ -88,7 +86,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--E
     <!--FOOTER-->
     <div class="footer">
     <!--LOGIN BUTTON-->
-        <asp:Button id="login" Text="Login" class="button" runat="server" />
+        <asp:Button id="login" Text="Login" class="button" runat="server" OnClick="login_Click" />
         <!--END LOGIN BUTTON-->
 	    <!--FORGET PASSWORD--><a href="#" class="forgotpassword" >Forgot your password?</a><!--END FORGET PASSWORD-->
     </div>

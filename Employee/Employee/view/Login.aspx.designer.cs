@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Employee.view {
-    
-    
-    public partial class WebForm2 {
-        
+namespace Employee.view
+{
+
+
+    public partial class WebForm2
+    {
+
         /// <summary>
         /// UnameTextBox control.
         /// </summary>
@@ -20,7 +22,16 @@ namespace Employee.view {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox UnameTextBox;
-        
+
+        /// <summary>
+        /// Password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Password;
+
         /// <summary>
         /// login control.
         /// </summary>
