@@ -120,6 +120,7 @@
     <Content Include="view\Profile.aspx" />
     <Content Include="view\ResetPassword.aspx" />
     <Content Include="view\SecurityQuestion.aspx" />
+    <Content Include="view\Signup.aspx" />
     <Content Include="view\updateUser.aspx" />
     <Content Include="view\UserManagement.aspx" />
     <None Include="Web.Debug.config">
@@ -140,6 +141,7 @@
   <ItemGroup>
     <Compile Include="Controller\Email.cs" />
     <Compile Include="Controller\DBConnection.cs" />
+    <Compile Include="Domain\UserClass.cs" />
     <Compile Include="Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +212,13 @@
     </Compile>
     <Compile Include="view\SecurityQuestion.aspx.designer.cs">
       <DependentUpon>SecurityQuestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="view\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="view\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\updateUser.aspx.cs">
       <DependentUpon>updateUser.aspx</DependentUpon>
