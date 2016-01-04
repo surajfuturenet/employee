@@ -6,7 +6,7 @@
 <head runat="server">
      <!--META-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Forget Password Step 3 Form</title>
+    <title>Forget Password Step 2 Form</title>
 
     <!--STYLESHEETS-->
     <link href="/CSS/ResetPassword.css" rel="stylesheet" type="text/css" />
