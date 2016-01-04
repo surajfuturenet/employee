@@ -22,6 +22,7 @@ namespace Employee.Domain
         private bool isActive;
         private int roleId;
         private string role_name;
+        private byte[] encryptedPassword;
 
         public int UserId
         {
@@ -138,7 +139,17 @@ namespace Employee.Domain
 
             }
         }
-
+        public byte[] EncryptedPassword
+        {
+            get
+            {
+                return encryptedPassword;
+            }
+            set
+            {
+                encryptedPassword = value;
+            }
+        }
         //insert data in to User table
         public bool insertUserData(string username, string password, string email, string fname, string lname, string contact, bool isactive)
         {
