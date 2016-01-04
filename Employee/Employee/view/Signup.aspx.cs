@@ -21,25 +21,46 @@ namespace Employee.view
         }
         protected void submit_Click(object sender, EventArgs e)
         {
-            if (checkUsernameUnique(UnameTextBox.Text) && checkEmailUnique(Email.Text))
-            {
-                submit_Data();
-            }
-            else if (!checkUsernameUnique(UnameTextBox.Text) && !checkEmailUnique(Email.Text))
+            if (passwordConfirmation())
             {
 
-                cleanForm();
-                CheckCorrect.Text = "Username and Email are Already Exist";
+                if (checkUsernameUnique(UnameTextBox.Text) && checkEmailUnique(Email.Text))
+                {
+                    submit_Data();
+                }
+                else if (!checkUsernameUnique(UnameTextBox.Text) && !checkEmailUnique(Email.Text))
+                {
+
+                    cleanForm();
+                    CheckCorrect.Text = "Username and Email are Already Exist";
+                }
+                else if (!checkEmailUnique(Email.Text))
+                {
+                    cleanForm();
+                    CheckCorrect.Text = "Email is Already Exist";
+                }
+                else
+                {
+                    cleanForm();
+                    CheckCorrect.Text = "Username is Already Exist";
+                }
             }
-            else if (!checkEmailUnique(Email.Text))
-            {
+            else {
                 cleanForm();
-                CheckCorrect.Text = "Email is Already Exist";
+                CheckCorrect.Text = "password confermation not match";
             }
-            else
+        }
+
+        protected bool passwordConfirmation()
+        {
+            var pass1 = PaswordTextBox.Text;
+            var pass2 = CPaswordTextBox.Text;
+            if (pass1 != pass2)
             {
-                cleanForm();
-                CheckCorrect.Text = "Username is Already Exist";
+                return false;
+            }
+            else {
+                return true;
             }
         }
         protected void submit_Data()
