@@ -61,7 +61,7 @@ function CapsLock(e){
 	<!--HEADER-->
     <div class="header">
     <!--TITLE--><h1>Login Form
-		<!--REGISTER BUTTON--><a href="#"  class="register" >Register Now</a><!--END REGISTER BUTTON-->
+		<!--REGISTER BUTTON--><a href="/view/Signup.aspx"  class="register" >Register Now</a><!--END REGISTER BUTTON-->
 	</h1><!--END TITLE-->
 	    
 
