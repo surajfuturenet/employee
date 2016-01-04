@@ -574,6 +574,70 @@ namespace Employee.Domain
                 }
             }
         }
-        //
+        //check username is unique
+        public Boolean checkUsernameUnique(string userName)
+        {
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("checkUsernameUnique", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = userName;
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    SqlParameter returnParameter = cmd.Parameters.Add("@uniqueUser", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+                    cmd.ExecuteNonQuery();
+
+                    int countVal = (int)returnParameter.Value;
+
+                    if (countVal > 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        //check email is unique
+        public Boolean checkEmailUnique(string email)
+        {
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("checkEmailUnique", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    SqlParameter returnParameter = cmd.Parameters.Add("@uniqueUser", SqlDbType.Int);
+                    returnParameter.Direction = ParameterDirection.ReturnValue;
+                    cmd.ExecuteNonQuery();
+
+                    int countVal = (int)returnParameter.Value;
+
+                    if (countVal > 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+
+                }
+            }
+        }
     }
 }
