@@ -21,28 +21,30 @@
                 <h1>
                     Account Help
                 </h1>
-                <span> Step 2 - Answer at least 2 questions</span>
+                <span> Step 2 - Answer at least 2 questions</span><br />
+                <asp:Label runat="server" id="error"></asp:Label>
             </div>
             <div class="content">
                 <div class="header2">
-                    <span>question 1</span>
+                    <asp:Label runat="server" id="Q1"></asp:Label>
                 </div>
                 
-                <asp:TextBox ID="TextBox1" runat="server" class="input username" value="answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                <asp:TextBox ID="TextBox1" runat="server" class="input username" value="Answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                    onblur="if (this.value=='') this.value = this.defaultValue" />
+
+                <div class="header2">
+                    <asp:Label runat="server" id="Q2"></asp:Label>
+                </div>
+                <asp:TextBox ID="TextBox2" runat="server" class="input username" value="Answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
                     onblur="if (this.value=='') this.value = this.defaultValue" />
                 <div class="header2">
-                    <span>question 2</span>
+                    <asp:Label runat="server" id="Q3"></asp:Label>
                 </div>
-                <asp:TextBox ID="TextBox2" runat="server" class="input username" value="answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
-                    onblur="if (this.value=='') this.value = this.defaultValue" />
-                <div class="header2">
-                    <span>question 3</span>
-                </div>
-                <asp:TextBox ID="TextBox3" runat="server" class="input username" value="answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                <asp:TextBox ID="TextBox3" runat="server" class="input username" value="Answer" onfocus="if (this.value==this.defaultValue) this.value = ''"
                     onblur="if (this.value=='') this.value = this.defaultValue" />
             </div>
             <div class="footer">
-                <asp:Button ID="Button1" runat="server" Text="Next" class="button" />
+                <asp:Button ID="Button1" runat="server" Text="Next" class="button" OnClick="Button1_Click" />
             </div>
         </form>
     </div>
