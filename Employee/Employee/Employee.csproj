@@ -94,7 +94,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\profile.css" />
     <Content Include="CSS\ResetPassword.css" />
+    <Content Include="CSS\signup.css" />
+    <Content Include="CSS\updateuser.css" />
+    <Content Include="CSS\usermanagement.css" />
     <Content Include="Employee.aspx" />
     <Content Include="Images\bg.png" />
     <Content Include="Images\gradient.png" />
@@ -104,6 +109,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery.min.js" />
     <Content Include="view\AdminProfile.aspx" />
     <Content Include="view\EmailVerification.aspx" />
     <Content Include="view\ForgetPasswordStep1.aspx" />
@@ -112,10 +119,9 @@
     <Content Include="view\Login.aspx" />
     <Content Include="view\Profile.aspx" />
     <Content Include="view\ResetPassword.aspx" />
-    <Content Include="view\Signup.aspx" />
+    <Content Include="view\SecurityQuestion.aspx" />
     <Content Include="view\updateUser.aspx" />
     <Content Include="view\UserManagement.aspx" />
-    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -127,9 +133,13 @@
     <Content Include="CSS\Login.css" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Email.cs" />
+    <Compile Include="Controller\DBConnection.cs" />
     <Compile Include="Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,12 +204,12 @@
     <Compile Include="view\ResetPassword.aspx.designer.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="view\Signup.aspx.cs">
-      <DependentUpon>Signup.aspx</DependentUpon>
+    <Compile Include="view\SecurityQuestion.aspx.cs">
+      <DependentUpon>SecurityQuestion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="view\Signup.aspx.designer.cs">
-      <DependentUpon>Signup.aspx</DependentUpon>
+    <Compile Include="view\SecurityQuestion.aspx.designer.cs">
+      <DependentUpon>SecurityQuestion.aspx</DependentUpon>
     </Compile>
     <Compile Include="view\updateUser.aspx.cs">
       <DependentUpon>updateUser.aspx</DependentUpon>
@@ -214,13 +224,6 @@
     </Compile>
     <Compile Include="view\UserManagement.aspx.designer.cs">
       <DependentUpon>UserManagement.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
