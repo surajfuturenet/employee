@@ -21,16 +21,18 @@
                 <h1>
                     Account Help
                 </h1>
-                <span>Step 1</span>
+                <span>Step 1<br />Enter User Name Or Email</span>
+                   
             </div>
             <div class="content">
-                <asp:TextBox ID="user_name" runat="server" class="input username" value="user name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-                    onblur="if (this.value=='') this.value = this.defaultValue" />
-                <asp:TextBox ID="email" runat="server" class="input password" value="email" onfocus="if (this.value==this.defaultValue) this.value = ''"
-                    onblur="if (this.value=='') this.value = this.defaultValue" />
+                <asp:TextBox ID="user_name" runat="server" class="input username" placeholder="user name"  />
+                <div>
+                    <asp:Label ID="emailExist" runat="server" Font-Size="X-Small" ForeColor="#FF3300"></asp:Label>
+                </div>
+                <asp:TextBox ID="email" runat="server" class="input password" placeholder="email"  />
             </div>
             <div class="footer" runat="server">
-                <asp:Button ID="submit" runat="server" Text="Next" class="button" />
+                <asp:Button ID="submit" runat="server" Text="Next" class="button" OnClick="submit_Click" />
             </div>
         </form>
     </div>
