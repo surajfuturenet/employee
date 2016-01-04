@@ -88,7 +88,7 @@ function CapsLock(e){
     <!--LOGIN BUTTON-->
         <asp:Button id="login" Text="Login" class="button" runat="server" OnClick="login_Click" />
         <!--END LOGIN BUTTON-->
-	    <!--FORGET PASSWORD--><a href="#" class="forgotpassword" >Forgot your password?</a><!--END FORGET PASSWORD-->
+	    <!--FORGET PASSWORD--><a href="/view/ForgetPasswordStep1.aspx" class="forgotpassword" >Forgot your password?</a><!--END FORGET PASSWORD-->
     </div>
     <!--END FOOTER-->
 
