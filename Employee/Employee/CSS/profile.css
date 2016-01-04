@@ -125,10 +125,17 @@ HEADER
 	
 }
 
-.profile-form .header span {
+.profile-form .header #User, .profile-form .header span{
 	font-size: 25px;
 	line-height: 16px;
 	color: #678889;
+	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
+}
+
+.profile-form .header #error {
+	font-size: 15px;
+	line-height: 16px;
+	color: green;
 	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
 }
 
@@ -314,4 +321,11 @@ FOOTER
 .profile-form .footer .register:focus {
 	position: relative;
 	bottom: -1px;
+}
+
+.profile-form .header #error {
+	font-size: 15px;
+	line-height: 16px;
+	color: green;
+	text-shadow: 1px 1px 0 rgba(256,256,256,1.0);
 }
