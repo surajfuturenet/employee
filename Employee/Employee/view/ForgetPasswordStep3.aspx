@@ -21,18 +21,19 @@
                 <h1>
                     Account Help
                 </h1>
-                <span> Step 3</span>
+                <span> Step 3</span><br />
+                <asp:Label runat="server" ID="error"></asp:Label>
             </div>
             <div class="content" runat="server">
                 <div class="header2">
                     <span>Enter the PIN Nomber which we sent your Mail</span>
                 </div>
-                <asp:TextBox ID="TextBox1" runat="server" class="input username" value="PIN Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                <asp:TextBox ID="TextBox1" runat="server" class="input username" value="PIN Number" onfocus="if (this.value==this.defaultValue) this.value = ''"
                     onblur="if (this.value=='') this.value = this.defaultValue" />
             </div>
             <div class="footer" runat="server">
                 
-                <asp:Button ID="submit" runat="server" name="submit" Text="Next" class="button" />
+                <asp:Button ID="submit" runat="server" name="submit" Text="Next" class="button" OnClick="submit_Click" />
                 <asp:Button ID="button" runat="server" name="Resend" Text="Resend Mail" class="button2" />
                 
             </div>

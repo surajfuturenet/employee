@@ -13,5 +13,25 @@ namespace Employee.view
         {
 
         }
+
+        protected void submit_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text.Equals("PIN Number")) {
+                error.Text = "PIN Number is required";
+                return;
+            }
+            string PIN = "1234";// Retrive the pin using the User id
+
+            if (TextBox1.Text.Equals(PIN))
+            {
+                Response.Redirect("ResetPassword.aspx");
+            }
+            else {
+                error.Text = "Type correct PIN / Click Resend Mail to resend the PIN number";
+            }
+
+
+
+        }
     }
 }
