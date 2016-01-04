@@ -48,6 +48,7 @@ onblur="if (this.value=='') this.value = this.defaultValue"></asp:TextBox>
     <!--END USERNAME-->
         	
 	<!--FIRSTNAME-->      
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="add, a-z, 0-9 Length  5 -15 characters" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="^[a-z0-9]{5,15}$" ControlToValidate="UnameTextBox"></asp:RegularExpressionValidator>
         <asp:TextBox runat="server" id="FnameTextBox" CssClass="input firstname" value="First Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END FIRSTNAME-->
 
@@ -55,14 +56,19 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--E
         <asp:TextBox runat="server" id="LnameTextBox" class="input lastname" value="Last Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END LASTNAME-->
 	
-	 <!--EMAIL--><asp:TextBox runat="server"  id="Email" type="text" class="input email"  value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
+	 <!--EMAIL-->
+        <asp:TextBox runat="server"  id="Email" type="text" class="input email"  value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" />
         
         <!--END EMAIL-->	
-	<!--PASSWORD--><asp:TextBox runat="server" id="PaswordTextBox" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
+	<!--PASSWORD-->
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="Email" ErrorMessage="RegularExpressionValidator" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+        <asp:TextBox runat="server" id="PaswordTextBox" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" ></asp:TextBox><!--END PASSWORD-->
 
-	<!--CONFIRMPASSWORD--><asp:TextBox runat="server" id="CPaswordTextBox" class="input password" value="Confirm Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
+	<!--CONFIRMPASSWORD-->
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="PaswordTextBox" ErrorMessage="Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&amp;? &quot;" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&amp;? &quot;]).*$"></asp:RegularExpressionValidator>
+        <asp:TextBox runat="server" id="CPaswordTextBox" class="input password" value="Confirm Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" ></asp:TextBox><!--END CONFIRMPASSWORD-->
 
         <!--CONFIRMPASSWORD--><asp:TextBox runat="server" id="ContactNo" class="input password" value="Contact nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
@@ -71,11 +77,9 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--E
 <%--	<!--USER ROLE--><asp:DropDownList class="input userrole" runat="server" ID="UserRole">
                 <asp:ListItem class="input" Value="admin">Admin</asp:ListItem>       
                 <asp:ListItem class="input" Value="user">User</asp:ListItem>  
-            </asp:DropDownList><!--USER ROLE-->--%>
-       
+            </asp:DropDownList><!--USER ROLE-->--%>       
     </div>
-	
-	
+		
     <!--END CONTENT-->
     
     <!--FOOTER-->

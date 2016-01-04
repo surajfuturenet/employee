@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Configuration;
+using Employee.Domain;
 
 namespace Employee.view
 {
@@ -50,24 +51,21 @@ namespace Employee.view
             var saltedHash = hmacMD5.ComputeHash(password);
 
 
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("InsertUserInfo", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+            //Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            var user = new User();
 
-                    cmd.Parameters.Add("@user_name", SqlDbType.VarChar).Value = UnameTextBox.Text;
-                    cmd.Parameters.Add("@password", SqlDbType.VarBinary).Value = saltedHash;
-                    cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = FnameTextBox.Text;
-                    cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = LnameTextBox.Text;
-                    cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = Email.Text;
-                    cmd.Parameters.Add("@contactno", SqlDbType.VarChar).Value = ContactNo.Text;
+            user.UserName = UnameTextBox.Text;
+            user.FirstName = FnameTextBox.Text;
+            user.LastName = LnameTextBox.Text;
+            user.Email = Email.Text;
+            user.EncryptedPassword = saltedHash;
+            user.ContactNum = ContactNo.Text;
+            user.IsActive = false;
 
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            Session["userDetails"] = user;
+            
+            Response.Redirect("~/view/SecurityQuestion.aspx", false);
+
         }
 
         protected Boolean checkUsernameUnique(string userName)
