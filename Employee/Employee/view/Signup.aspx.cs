@@ -31,18 +31,14 @@ namespace Employee.view
                 }
                 else if (!user.checkUsernameUnique(UnameTextBox.Text) && !user.checkEmailUnique(Email.Text))
                 {
-
-                    cleanForm();
                     CheckCorrect.Text = "Username and Email are Already Exist";
                 }
                 else if (!user.checkEmailUnique(Email.Text))
                 {
-                    cleanForm();
                     CheckCorrect.Text = "Email is Already Exist";
                 }
                 else
                 {
-                    cleanForm();
                     CheckCorrect.Text = "Username is Already Exist";
                 }
             }
@@ -78,7 +74,7 @@ namespace Employee.view
             user.IsActive = false;
 
             Session["userDetails"] = user;
-            
+            cleanForm();
             Response.Redirect("~/view/SecurityQuestion.aspx", false);
 
         }
