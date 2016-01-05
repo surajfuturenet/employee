@@ -1,9 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ForgetPasswordStep2.aspx.cs" Inherits="Employee.view.ForgetPasswordStep2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/EmployeeMaster.Master" CodeBehind="ForgetPasswordStep2.aspx.cs" Inherits="Employee.view.ForgetPasswordStep2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
      <!--META-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Forget Password Step 2 Form</title>
@@ -13,8 +10,9 @@
 
     <!--SCRIPTS-->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-</head>
-<body>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div id="wrapper">
         <form name="login-form" class="login-form" id="form1" runat="server">
             <div class="header">
@@ -50,5 +48,4 @@
     </div>
     <div class="gradient"></div>
 
-</body>
-</html>
+</asp:Content>

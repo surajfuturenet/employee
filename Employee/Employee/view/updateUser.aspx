@@ -1,11 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="updateUser.aspx.cs" Inherits="Employee.Employee" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/EmployeeMaster.Master" CodeBehind="updateUser.aspx.cs" Inherits="Employee.Employee" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-
-
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 <!--META-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,8 +18,9 @@ $(document).ready(function() {
 });
 </script>
 
-</head>
-<body>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
 
 <!--WRAPPER-->
 <div id="wrapper">
@@ -120,5 +116,5 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--C
 
 <!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
 
-</body>
-</html>
+
+</asp:Content>
