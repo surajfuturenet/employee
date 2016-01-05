@@ -38,24 +38,20 @@ namespace Employee.Domain
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userid;
-                        cmd.Parameters.Add("@pinval", SqlDbType.Int).Value = pinval;
+                        cmd.Parameters.Add("@pin_num", SqlDbType.Int).Value = pinval;
 
                         con.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
-                        returnParameter.Direction = ParameterDirection.ReturnValue;
+                        int countVal = cmd.ExecuteNonQuery();
 
 
-                        int countVal = (int)returnParameter.Value;
 
-                        if (countVal == 1)
+                       
+
+                        if (countVal == -1)
                         {
                             return 1;
                         }
-                        else if (countVal == 2)
-                        {
-                            return 2;
-                        }
+                       
                         else
                         {
                             return -1;
