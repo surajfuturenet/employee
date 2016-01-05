@@ -43,7 +43,7 @@ namespace Employee.Domain
             {
                 try
                 {
-                    using (SqlCommand cmd = new SqlCommand("InsertUserAnswer", con))
+                    using (SqlCommand cmd = new SqlCommand("InsertAnswer", con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
@@ -52,14 +52,10 @@ namespace Employee.Domain
                         cmd.Parameters.Add("@answer", SqlDbType.VarChar).Value = userAnswer;
 
                         con.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
-                        returnParameter.Direction = ParameterDirection.ReturnValue;
+                        int countVal  = cmd.ExecuteNonQuery();
+                       
 
-
-                        int countVal = (int)returnParameter.Value;
-
-                        if (countVal == 1)
+                        if (countVal == -1)
                         {
                             return true;
                         }
