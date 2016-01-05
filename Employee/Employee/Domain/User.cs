@@ -552,7 +552,7 @@ namespace Employee.Domain
                         {
                             user = new User();
                             user.UserId = int.Parse(reader["user_id"].ToString());
-                            user.UserName = reader["user_name"].ToString();
+                            user.UserName = reader["username"].ToString();
                             user.Email = reader["email"].ToString();
                             user.FirstName = reader["fname"].ToString();
                             user.LastName = reader["lname"].ToString();
