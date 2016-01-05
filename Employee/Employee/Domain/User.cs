@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -151,7 +151,7 @@ namespace Employee.Domain
             }
         }
         //insert data in to User table
-        public bool insertUserData(string username, byte [] enpassword, string email, string fname, string lname, string contact,bool isactive)
+        public bool insertUserData(string username, byte[] enpassword, string email, string fname, string lname, string contact, bool isactive)
         {
             isactive = false;
             int role = 1;
@@ -388,7 +388,7 @@ namespace Employee.Domain
             }
         }
         //GetUserId by username And password
-        public List<User> checkUserLogin(string username, byte [] password)
+        public List<User> checkUserLogin(string username, byte[] password)
         {
             var saltedHash = password;
 
@@ -476,7 +476,7 @@ namespace Employee.Domain
             }
         }
         //Update password
-        public bool updatePassword(int userid , byte[] password)
+        public bool updatePassword(int userid, byte[] password)
         {
 
 
