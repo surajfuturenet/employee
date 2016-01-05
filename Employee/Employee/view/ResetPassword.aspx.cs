@@ -21,7 +21,9 @@ namespace Employee.view
             if (passwordConfirmation())
             {
                 var user = new User();
-                int userId = 2002;// Session["userId"];
+
+                User us = (User)Session["User"];
+                int userId = us.UserId;
                 byte[] encryptPassword = PasswordEncryption.encryptPassword(PaswordTextBox.Text);
                 if (user.updatePassword(userId, encryptPassword))
                 {
