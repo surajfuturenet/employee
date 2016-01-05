@@ -1,4 +1,5 @@
 ﻿using Employee.Controller;
+using Employee.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,13 +17,17 @@ namespace Employee.view
         int NoQuestion = 0;  // Number Of Question
         protected void Page_Load(object sender, EventArgs e)
         {
-            int UID = 2;   // User Id hard coded
+
+            User us = (User)Session["userEmail"];
+            List <User> nuser = us.retrieveEmail("", us.Email);
+             int UID = nuser[0].UserId;
+            // int UID = 2;   // User Id hard coded
 
             DBConnection DBcon = new DBConnection();
             SqlConnection con = DBcon.CreateConnection();
 
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT SQ.q_id, question FROM SequrityQuestion SQ, ProvideAnswers P WHERE SQ.q_id = P.q_id AND P.user_id = " + UID;
+            cmd.CommandText = "SELECT SQ.q_id, question FROM SequrityQuestions SQ, ProvideAnswers P WHERE SQ.q_id = P.q_id AND P.user_id = " + UID;
 
             try
             {
@@ -57,7 +62,10 @@ namespace Employee.view
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            int UID = 2;   // User Id hard coded
+            User us = (User)Session["userEmail"];
+            List<User> nuser = us.retrieveEmail("", us.Email);
+            int UID = nuser[0].UserId;
+            // int UID = 2;   // User Id hard coded
             int CheckError = 1;
             int Answered = 0;
             Answered = CountAnswered(TextBox1.Text,TextBox2.Text,TextBox3.Text);
@@ -72,7 +80,7 @@ namespace Employee.view
             SqlConnection con = DBcon.CreateConnection();
 
             SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT SQ.q_id, answer FROM SequrityQuestion SQ, ProvideAnswers P WHERE SQ.q_id = P.q_id AND P.user_id = " + UID;
+            cmd.CommandText = "SELECT SQ.q_id, answer FROM SequrityQuestions SQ, ProvideAnswers P WHERE SQ.q_id = P.q_id AND P.user_id = " + UID;
 
             try {
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -114,11 +122,12 @@ namespace Employee.view
             }
             else
             {
-                Email email = new Email("irfan@thefuturenet.com"); // email address is hard coded
+                Email email = new Email(nuser[0].Email,nuser[0].UserId);
                 int success  = email.SendMail();
 
                 if (success == 1)
                 {
+                    Session["User"] = nuser[0];
                     Response.Redirect("ForgetPasswordStep3.aspx");
                 }
                 else {
