@@ -26,25 +26,30 @@
                 <h1>
                    Reset Your Password
                 </h1>
-                <span>Enter your new password here.</span>
+                <span>Enter your new password here.</span><br />
+                <asp:Label ID="CheckCorrect" runat="server" Font-Size="X-Small" ForeColor="#FF3300" ></asp:Label>
             </div>
 
             <div class="content">
-                <asp:TextBox ID="UserName" class="input password"  value="Password" runat="server" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
-                    onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}"/>
-               <asp:RegularExpressionValidator id="RegularExpressionValidator1" 
-                     ControlToValidate="UserName"
-                     ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{5,15})$"
-                     Display="Static"
-                     EnableClientScript="false"
-                     ErrorMessage="Password must between 5 to 15 contain numeric values and Alphabetic Characters"
-                     runat="server"/>
-
-                <asp:TextBox ID="Password" class="input password"  value="Confirm Password" runat="server" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
-                    onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" />
+                <asp:TextBox runat="server" id="PaswordTextBox" class="input password" type="password" placeholder="Password" onkeypress="CapsLockPassword(event)" ></asp:TextBox><!--END PASSWORD-->
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="PaswordTextBox" ErrorMessage="RequiredFieldValidator" Font-Size="X-Small" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                <div id="capslock1" style="visibility:hidden">
+        
+       
+        <span>Caps Lock is on.</span></div> 
+	<!--CONFIRMPASSWORD-->
+                
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="PaswordTextBox" ErrorMessage="Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&amp;? &quot;" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&amp;? &quot;]).*$"></asp:RegularExpressionValidator>
+        <asp:TextBox runat="server" id="CPaswordTextBox" class="input password" type="password" placeholder="Confirm Password" onkeypress="CapsLockCPassword(event)" ></asp:TextBox><!--END CONFIRMPASSWORD-->
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="CPaswordTextBox" ErrorMessage="RequiredFieldValidator" Font-Size="X-Small" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="CPaswordTextBox" ErrorMessage="Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&amp;? &quot;" Font-Size="X-Small" ForeColor="#FF3300" ValidationExpression="^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&amp;? &quot;]).*$"></asp:RegularExpressionValidator>
+        <div id="capslock2" style="visibility:hidden">
+        
+       
+        <span>Caps Lock is on.</span></div> 
             </div>
             <div class="footer">
-                <asp:Button ID="submit" class="button" runat="server" Text="Reset Password" />
+                <asp:Button ID="submit" class="button" runat="server" Text="Reset Password" OnClick="submit_Click" />
             </div>
         </form>
     </div>
