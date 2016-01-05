@@ -8,7 +8,7 @@ namespace Employee.Tools
 {
     public class PasswordEncryption
     {
-        internal static object encryptPassword(string password)
+        internal static byte[] encryptPassword(string password)
         {
             var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
             var passwordEncryp = System.Text.Encoding.UTF8.GetBytes(password);
