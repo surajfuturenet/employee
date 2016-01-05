@@ -10,6 +10,8 @@ using System.Net.Mail;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using Employee.Domain;
+using Employee.Tools;
 
 namespace Employee.view
 {
@@ -27,39 +29,30 @@ namespace Employee.view
 
         protected void check(string userName, string password)
         {
-            var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
-            var passwordBits = System.Text.Encoding.UTF8.GetBytes(password);
 
-            var hmacMD5 = new HMACMD5(salt);
-            var saltedHash = hmacMD5.ComputeHash(passwordBits);
+            var user = new User();
+            byte[] encryptPassword = PasswordEncryption.encryptPassword(password);
+            var userList = user.checkUserLogin(userName, encryptPassword);
 
-            var userId = Athentication(userName, saltedHash);
-
-        }
-
-        protected int Athentication(string userName,byte[] password)
-        {
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
+            if (userList.Count > 1)
             {
-                using (SqlCommand cmd = new SqlCommand("CheckLogin", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                InfoLabel.Text = "Invalid User";
+            }
+            else if (userList.Count == 1)
+            {
+                user.UserId = userList[0].UserId;
+                user.Email = userList[0].Email;
+                user.UserName = userList[0].UserName;
 
-                    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = userName;
-                    cmd.Parameters.Add("@password", SqlDbType.VarBinary).Value = userName;
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                Session["userLogIn"] = user;
 
-                    SqlParameter checkAth = cmd.Parameters.Add("@ResultValue", SqlDbType.Bit);
-                    checkAth.Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-
-                    int checkAthentication = (int)checkAth.Value;
-
-                    return checkAthentication;
-                }
+                Response.Redirect("~/view/UserManagement.aspx", false);
+            }
+            else {
+                InfoLabel.Text = "User not Exist Please Register";
             }
         }
+
+
     }
 }

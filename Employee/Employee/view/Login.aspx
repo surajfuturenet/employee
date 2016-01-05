@@ -66,7 +66,7 @@ function CapsLock(e){
 	    
 
 				
-    <!--DESCRIPTION--><span>Fill out the form below to login.</span><!--END DESCRIPTION-->
+    <!--DESCRIPTION--><span>Fill out the form below to login.</span><br /><asp:Label ID="InfoLabel" runat="server" ></asp:Label><!--END DESCRIPTION-->
     </div>
     <!--END HEADER-->
 	
