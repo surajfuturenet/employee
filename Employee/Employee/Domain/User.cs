@@ -22,7 +22,6 @@ namespace Employee.Domain
         private bool isActive;
         private int roleId;
         private string role_name;
-        private byte[] encryptedPassword;
 
         public int UserId
         {
@@ -139,17 +138,7 @@ namespace Employee.Domain
 
             }
         }
-        public byte[] EncryptedPassword
-        {
-            get
-            {
-                return encryptedPassword;
-            }
-            set
-            {
-                encryptedPassword = value;
-            }
-        }
+
         //insert data in to User table
         public bool insertUserData(string username, string password, string email, string fname, string lname, string contact, bool isactive)
         {
@@ -456,10 +445,10 @@ namespace Employee.Domain
                         while (reader.Read())
                         {
                             user = new User();
+                            user.UserId = int.Parse(reader["user_id"].ToString());
                             user.Email = reader["email"].ToString();
-                            if (user.Email != "") {
-                                UserList.Add(user);
-                            }
+
+                            UserList.Add(user);
                         }
                         return UserList;
 
@@ -538,7 +527,7 @@ namespace Employee.Domain
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("@user_name", SqlDbType.VarChar).Value = username;
+                        cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
                         cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
                         cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = fname;
                         cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = lname;
@@ -575,70 +564,6 @@ namespace Employee.Domain
                 }
             }
         }
-        //check username is unique
-        public Boolean checkUsernameUnique(string userName)
-        {
 
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("checkUsernameUnique", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = userName;
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-
-                    SqlParameter returnParameter = cmd.Parameters.Add("@uniqueUser", SqlDbType.Int);
-                    returnParameter.Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-
-                    int countVal = (int)returnParameter.Value;
-
-                    if (countVal > 0)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        //check email is unique
-        public Boolean checkEmailUnique(string email)
-        {
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("checkEmailUnique", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-
-                    SqlParameter returnParameter = cmd.Parameters.Add("@uniqueUser", SqlDbType.Int);
-                    returnParameter.Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-
-                    int countVal = (int)returnParameter.Value;
-
-                    if (countVal > 0)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-
-                }
-            }
-        }
     }
 }
