@@ -476,7 +476,7 @@ namespace Employee.Domain
             }
         }
         //Update password
-        public bool updatePassword(int userid)
+        public bool updatePassword(int userid , byte[] password)
         {
 
 
@@ -489,12 +489,13 @@ namespace Employee.Domain
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userid;
+                        cmd.Parameters.Add("@password", SqlDbType.VarBinary).Value = password;
 
                         con.Open();
                         cmd.ExecuteNonQuery();
                         SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
-
+                        cmd.ExecuteNonQuery();
 
                         int countVal = (int)returnParameter.Value;
 
@@ -536,7 +537,7 @@ namespace Employee.Domain
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("@user_name", SqlDbType.VarChar).Value = username;
+                        cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
                         cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
                         cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = fname;
                         cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = lname;
