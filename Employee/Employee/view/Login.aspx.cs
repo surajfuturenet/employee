@@ -40,10 +40,7 @@ namespace Employee.view
             }
             else if (userList.Count == 1)
             {
-                user.UserId = userList[0].UserId;
-                user.Email = userList[0].Email;
-                user.UserName = userList[0].UserName;
-
+                user = userList[0];
                 Session["userLogIn"] = user;
 
                 Response.Redirect("~/view/UserManagement.aspx", false);
