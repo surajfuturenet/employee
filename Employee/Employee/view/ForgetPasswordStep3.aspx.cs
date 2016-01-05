@@ -1,4 +1,5 @@
-﻿using Employee.Domain;
+﻿using Employee.Controller;
+using Employee.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,25 @@ namespace Employee.view
 
 
 
+        }
+
+        protected void button_Click(object sender, EventArgs e)
+        {
+            User us = (User)Session["User"];
+
+            Email email = new Email(us.Email, us.UserId);
+            error.Text = "";
+            int success = email.SendMail();
+
+            if (success == 1)
+            {
+                TextBox1.Text = "Enter PIN";
+                Session["User"] = us;
+                return;
+            }
+            else {
+                error.Text = "Mail is not Send";
+            }
         }
     }
 }

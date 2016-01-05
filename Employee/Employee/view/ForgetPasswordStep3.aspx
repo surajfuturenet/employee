@@ -34,7 +34,7 @@
             <div class="footer" runat="server">
                 
                 <asp:Button ID="submit" runat="server" name="submit" Text="Next" class="button" OnClick="submit_Click" />
-                <asp:Button ID="button" runat="server" name="Resend" Text="Resend Mail" class="button2" />
+                <asp:Button ID="button" runat="server" name="Resend" Text="Resend Mail" class="button2" OnClick="button_Click" />
                 
             </div>
         </form>
