@@ -19,6 +19,8 @@
 
 <!--STYLESHEETS-->
 <link href="/CSS/usermanagement.css" rel="stylesheet" type="text/css" />
+    <link href="/CSS/GridView.css" rel="stylesheet" type="text/css" /> 
+   
 
 <!--SCRIPTS-->
 
@@ -163,7 +165,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><asp:
     </div>
     <div runat="server" style="display:none" id="tabs_2">
 
-        <!--CONTENT-->
+        <!--CONTENT USER MANAGEMENT-->
     <div class="content">
 	
         <!--FIRSTNAME-->
@@ -203,8 +205,30 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         <asp:TextBox runat="server" id="TextBox4" class="input email" value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
                   </div><!--EMAIL-->
-	
-	
+        <!--GridView-->
+	 <div class =" gridview" >
+		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="616px" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
+                      PagerStyle-CssClass="pgr" HorizontalAlign="Justify" EmptyDataText="No Search Data Found">
+            <Columns>
+               
+                <asp:BoundField ItemStyle-Width="50px" DataField="userId" HeaderText="User Id" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="userName" HeaderText="User Name" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="email" HeaderText="Email" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="firstName" HeaderText="First Name" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="lastName" HeaderText="Last Name" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="contactNum" HeaderText="Contact Number" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="isActive" HeaderText="isActive" />
+                <asp:BoundField ItemStyle-Width="50px" DataField="roleName" HeaderText="Role" />
+                <asp:CommandField ShowEditButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" OnClick =" editClick"/>
+                 <asp:CommandField ShowDeleteButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top"/>
+                 
+                
+    
+            </Columns>
+
+		</asp:GridView>
+	</div>
+	<!--End Grid View-->
     </div>
 	
 	
@@ -215,7 +239,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
     
         <!--CLEAR BUTTON--><asp:Button id="clear" Text="Clear" class="button" runat="server" /><!--END CLEAR BUTTON-->
     <!--SEARCH BUTTON-->
-        <asp:Button id="search" Text="Search" class="button" runat="server" />
+        <asp:Button id="search" Text="Search" class="button" runat="server" OnClick="search_Click" />
         <!--END SEARCH BUTTON-->
     
     </div>

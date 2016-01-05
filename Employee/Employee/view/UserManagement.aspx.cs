@@ -44,5 +44,21 @@ namespace Employee.view
                 error.Text = "Data Sccussfully Updated";
             }
         }
+        //search click event
+        protected void search_Click(object sender, EventArgs e)
+        {
+            User usr = new User();
+            //usr.searchUsers(UnameTextBox.Text, EmailTextBox.Text, FnameTextBox.Text, LnameTextBox.Text);
+            List<User> exlist = usr.searchUsers(UnameTextBox.Text, EmailTextBox.Text, FnameTextBox.Text, LnameTextBox.Text);
+
+
+            GridView1.DataSource = exlist;
+            GridView1.DataBind();
+
+
+
+
+
+        }
     }
 }
