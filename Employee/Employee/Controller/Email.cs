@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Employee.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,10 +11,12 @@ namespace Employee.Controller
     public class Email
     {
         private string email;
+        private int id;
 
-        public Email(string email)
+        public Email(string email,int id)
         {
             this.email = email;
+            this.id = id;
         }
 
         public int SendMail()
@@ -23,9 +26,9 @@ namespace Employee.Controller
             try
             {
 
-                var fromAddress = new MailAddress("irfanfuturenet@gmail.com", "From Name"); // email is hardcoded
+                var fromAddress = new MailAddress("warunikasun@gmail.com", "From Name"); // email is hardcoded
                 var toAddress = new MailAddress(email, "To Name");
-                const string fromPassword = "aiCh)u2728";       // Password is hardcoded .. 
+                const string fromPassword = "0713444801";       // Password is hardcoded .. 
                 const string subject = "PIN Nomber";
                 Random rnd = new Random();
                 int pin = rnd.Next(1, 10000);
@@ -48,6 +51,8 @@ namespace Employee.Controller
                 })
                 {
                     smtp.Send(message);
+                    (new PinNumbers()).insertPin(id,pin);
+
                     success = 1;
                 }
 
