@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Configuration;
 using Employee.Domain;
+using Employee.Tools;
 
 namespace Employee.view
 {
@@ -23,18 +24,18 @@ namespace Employee.view
         {
             if (passwordConfirmation())
             {
-
-                if (checkUsernameUnique(UnameTextBox.Text) && checkEmailUnique(Email.Text))
+                var user = new User();
+                if (user.checkUsernameUnique(UnameTextBox.Text) && user.checkEmailUnique(Email.Text))
                 {
                     submit_Data();
                 }
-                else if (!checkUsernameUnique(UnameTextBox.Text) && !checkEmailUnique(Email.Text))
+                else if (!user.checkUsernameUnique(UnameTextBox.Text) && !user.checkEmailUnique(Email.Text))
                 {
 
                     cleanForm();
                     CheckCorrect.Text = "Username and Email are Already Exist";
                 }
-                else if (!checkEmailUnique(Email.Text))
+                else if (!user.checkEmailUnique(Email.Text))
                 {
                     cleanForm();
                     CheckCorrect.Text = "Email is Already Exist";
@@ -46,8 +47,8 @@ namespace Employee.view
                 }
             }
             else {
-                cleanForm();
-                CheckCorrect.Text = "password confermation not match";
+                CPaswordTextBox.Text = "";
+                CheckCorrect.Text = "password confirmation not match";
             }
         }
 
@@ -65,21 +66,14 @@ namespace Employee.view
         }
         protected void submit_Data()
         {
-            var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
-            var password = System.Text.Encoding.UTF8.GetBytes(PaswordTextBox.Text);
-
-            var hmacMD5 = new HMACMD5(salt);
-            var saltedHash = hmacMD5.ComputeHash(password);
-
-
-            //Page.Response.Redirect(Page.Request.Url.ToString(), true);
             var user = new User();
+            var pssEncypt = PasswordEncryption.encryptPassword(PaswordTextBox.Text);
 
             user.UserName = UnameTextBox.Text;
             user.FirstName = FnameTextBox.Text;
             user.LastName = LnameTextBox.Text;
             user.Email = Email.Text;
-            user.EncryptedPassword = saltedHash;
+            user.EncryptedPassword = pssEncypt;
             user.ContactNum = ContactNo.Text;
             user.IsActive = false;
 
@@ -89,70 +83,6 @@ namespace Employee.view
 
         }
 
-        protected Boolean checkUsernameUnique(string userName)
-        {
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("checkUsernameUnique", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = userName;
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-
-                    SqlParameter returnParameter = cmd.Parameters.Add("@uniqueUser", SqlDbType.Int);
-                    returnParameter.Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-
-                    int countVal = (int)returnParameter.Value;
-
-                    if (countVal > 0)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        protected Boolean checkEmailUnique(string email)
-        {
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("checkEmailUnique", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-
-                    SqlParameter returnParameter = cmd.Parameters.Add("@uniqueUser", SqlDbType.Int);
-                    returnParameter.Direction = ParameterDirection.ReturnValue;
-                    cmd.ExecuteNonQuery();
-
-                    int countVal = (int)returnParameter.Value;
-
-                    if (countVal > 0)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-
-                }
-            }
-        }
         protected void cleanForm()
         {
             UnameTextBox.Text = "";
