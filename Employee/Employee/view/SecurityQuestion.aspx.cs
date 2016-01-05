@@ -7,23 +7,53 @@ using System.Web.UI.WebControls;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using Employee.Controller;
+using Employee.Domain;
+using System.Security.Cryptography;
 
 namespace Employee.view
 {
     public partial class SecurityQuestion : System.Web.UI.Page
     {
 
+
        
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            var currentUserDetails = new User();
+            // currentUserDetails = (User)Session["userDetails"];
+
+            // for testing
+            // var user = new User();
+
+            currentUserDetails.UserName = "irfan";
+            currentUserDetails.FirstName = "irfan";
+            currentUserDetails.LastName = "irfan";
+            currentUserDetails.Email = "irfan";
+            var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
+            var password = System.Text.Encoding.UTF8.GetBytes("12345");
+
+            var hmacMD5 = new HMACMD5(salt);
+            var saltedHash = hmacMD5.ComputeHash(password);
+            currentUserDetails.EncryptedPassword = saltedHash;
+            currentUserDetails.ContactNum = "irfan";
+            currentUserDetails.IsActive = false;
+
+            //
+
+            if (currentUserDetails == null)
+            {
+                Response.Redirect("/view/error.aspx");
+            }
+
             if (!IsPostBack) // If page loads for first time
             {
                 // Assign the Session["update"] with unique value
                 Session["update"] = Server.UrlEncode(System.DateTime.Now.ToString());
                 //=============== Page load code =========================
 
-
+                
 
 
                 Answer1.ReadOnly = true;
@@ -35,7 +65,7 @@ namespace Employee.view
                 SqlConnection con = DBcon.CreateConnection();
 
                 SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT q_id, question FROM SequrityQuestion";
+            cmd.CommandText = "SELECT q_id, question FROM dbo.SequrityQuestions";
 
             try
                 {
@@ -70,12 +100,42 @@ namespace Employee.view
 
         protected void SQuestion_Click(object sender, EventArgs e)
         {
-           
+            var currentUserDetails = new User();
+            // currentUserDetails = (User)Session["userDetails"];
+
+            // for testing
+           // var user = new User();
+
+            currentUserDetails.UserName = "ihegrt85";
+            currentUserDetails.FirstName = "irfan";
+            currentUserDetails.LastName = "irfan";
+            currentUserDetails.Email = "irshtjsdsf@hn";
+            var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
+            var password = System.Text.Encoding.UTF8.GetBytes("12345");
+
+            var hmacMD5 = new HMACMD5(salt);
+            var saltedHash = hmacMD5.ComputeHash(password);
+            currentUserDetails.EncryptedPassword = saltedHash;
+            currentUserDetails.ContactNum = "irfan";
+            currentUserDetails.IsActive = false;
+
+            //
+
+            if (currentUserDetails == null)
+            {
+                Response.Redirect("/view/error.aspx");
+            }
+
+            // Check whether Questions are same
+            if (Int32.Parse(SQ1.SelectedValue) == Int32.Parse(SQ2.SelectedValue) || Int32.Parse(SQ2.SelectedValue) == Int32.Parse(SQ3.SelectedValue) || Int32.Parse(SQ1.SelectedValue) == Int32.Parse(SQ3.SelectedValue)) {
+                error.Text = "Please Choose Different Questions";
+                return;
+            }
 
             DBConnection DBcon = new DBConnection();
             SqlConnection con = DBcon.CreateConnection();
 
-            int UID = 2; // User id hardcoded
+            
 
             string ANS1 = Answer1.Text;
             string ANS2 = Answer2.Text;
@@ -87,24 +147,38 @@ namespace Employee.view
                 
             }
 
-           
+            /*get the sessin value from signup page*/
 
-           
-            AddWithValue(con, UID, SQ1, ANS1);
-            AddWithValue(con, UID, SQ2, ANS2);
-            AddWithValue(con, UID, SQ3, ANS3);
 
+            // SAVE IT TO USER
+            User us = new Domain.User();
+            bool inserted = us.insertUserData(currentUserDetails.UserName, currentUserDetails.EncryptedPassword, currentUserDetails.Email, currentUserDetails.LastName, currentUserDetails.LastName, currentUserDetails.ContactNum, false);
+
+            // TAKE UID
+            int UID = (us.checkUserLogin(currentUserDetails.UserName, currentUserDetails.EncryptedPassword))[0].UserId;
+            // SAvE IT TO PROVIDE ANSWERS
+
+            if (inserted) {
+                
+                ProvideAnswers p = new ProvideAnswers();
+            p.insertAnswers(UID, Int32.Parse(SQ1.SelectedValue), ANS1);
+                p.insertAnswers(UID, Int32.Parse(SQ2.SelectedValue), ANS1);
+                p.insertAnswers(UID, Int32.Parse(SQ3.SelectedValue), ANS1);
+                    
+            }
 
 
             DBcon.CloseConnection();
 
-
+            Response.Redirect("UserManagement.aspx");
 
 
         }
 
+       
+
         protected void AddWithValue(SqlConnection con, int UID,DropDownList SQ, string ANS) {
-            if (ANS.Equals("") != true)
+            if (ANS.Equals("Answer") != true)
             {
                 SqlCommand command = new SqlCommand("INSERT INTO ProvideAnswers VALUES(@user_id,@q_id,@answer)", con);
                 command.Parameters.AddWithValue("@user_id", UID);
@@ -118,6 +192,7 @@ namespace Employee.view
                 catch (Exception ex)
                 {
                     error.Text = ex.ToString();
+                    // delete last updated
                 }
             }
 

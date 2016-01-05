@@ -151,10 +151,11 @@ namespace Employee.Domain
             }
         }
         //insert data in to User table
-        public bool insertUserData(string username, string password, string email, string fname, string lname, string contact, bool isactive)
+        public bool insertUserData(string username, byte [] enpassword, string email, string fname, string lname, string contact,bool isactive)
         {
+            isactive = false;
             int role = 1;
-            var saltedHash = PasswordEncryption.encryptPassword(password);
+            var saltedHash = enpassword;
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
             {
@@ -170,17 +171,12 @@ namespace Employee.Domain
                         cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = fname;
                         cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = lname;
                         cmd.Parameters.Add("@contactno", SqlDbType.VarChar).Value = contact;
-                        cmd.Parameters.Add("@isctive", SqlDbType.Bit).Value = isactive;
+                        cmd.Parameters.Add("@isActive", SqlDbType.Bit).Value = isactive;
                         cmd.Parameters.Add("@role_id", SqlDbType.Int).Value = role;
                         con.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
-                        returnParameter.Direction = ParameterDirection.ReturnValue;
+                        int countVal = cmd.ExecuteNonQuery();
 
-
-                        int countVal = (int)returnParameter.Value;
-
-                        if (countVal == 1)
+                        if (countVal == -1)
                         {
                             return true;
                         }
@@ -392,9 +388,9 @@ namespace Employee.Domain
             }
         }
         //GetUserId by username And password
-        public List<User> checkUserLogin(string username, string password)
+        public List<User> checkUserLogin(string username, byte [] password)
         {
-            var saltedHash = PasswordEncryption.encryptPassword(password);
+            var saltedHash = password;
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
             {
@@ -457,6 +453,7 @@ namespace Employee.Domain
                         {
                             user = new User();
                             user.Email = reader["email"].ToString();
+                            user.UserId = int.Parse(reader["user_id"].ToString());
                             if (user.Email != "")
                             {
                                 UserList.Add(user);
