@@ -1,11 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Signup.aspx.cs" Inherits="Employee.view.Signup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/EmployeeMaster.Master" CodeBehind="Signup.aspx.cs" Inherits="Employee.view.Signup" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-   
-<!--META-->
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Sign up</title>
 
@@ -33,9 +30,9 @@ function CapsLockCPassword(e) {
         document.getElementById('capslock2').style.visibility = 'hidden';
 }
 </script>
-</head>
-<body>
-   
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
 <!--WRAPPER-->
 <div id="wrapper">
 
@@ -53,7 +50,7 @@ function CapsLockCPassword(e) {
 
 		
     <!--DESCRIPTION--><span>Fill out the form below to sign up.</span>
-        </br><asp:Label ID="CheckCorrect" runat="server" ForeColor="#FF3300"></asp:Label><!--END DESCRIPTION-->
+        <br /><asp:Label ID="CheckCorrect" runat="server" ForeColor="#FF3300"></asp:Label><!--END DESCRIPTION-->
     </div>
     <!--END HEADER-->
 	
@@ -116,5 +113,5 @@ function CapsLockCPassword(e) {
 <!--END WRAPPER-->
 
 <!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
-</body>
-</html>
+
+</asp:Content>
