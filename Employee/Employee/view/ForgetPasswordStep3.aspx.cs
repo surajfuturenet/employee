@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Employee.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,10 +21,15 @@ namespace Employee.view
                 error.Text = "PIN Number is required";
                 return;
             }
-            string PIN = "1234";// Retrive the pin using the User id
+
+            User us = (User)Session["User"];
+
+            int pin = (new PinNumbers()).GetPin(us.UserId)[0].PinNumber;
+            string PIN = pin.ToString();
 
             if (TextBox1.Text.Equals(PIN))
             {
+                Session["User"] = us;
                 Response.Redirect("ResetPassword.aspx");
             }
             else {
