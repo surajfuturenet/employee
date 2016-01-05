@@ -22,25 +22,9 @@ namespace Employee.view
         {
 
             var currentUserDetails = new User();
-            // currentUserDetails = (User)Session["userDetails"];
+            currentUserDetails = (User)Session["userDetails"];
 
-            // for testing
-            // var user = new User();
 
-            currentUserDetails.UserName = "irfan";
-            currentUserDetails.FirstName = "irfan";
-            currentUserDetails.LastName = "irfan";
-            currentUserDetails.Email = "irfan";
-            var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
-            var password = System.Text.Encoding.UTF8.GetBytes("12345");
-
-            var hmacMD5 = new HMACMD5(salt);
-            var saltedHash = hmacMD5.ComputeHash(password);
-            currentUserDetails.EncryptedPassword = saltedHash;
-            currentUserDetails.ContactNum = "irfan";
-            currentUserDetails.IsActive = false;
-
-            //
 
             if (currentUserDetails == null)
             {
@@ -101,25 +85,9 @@ namespace Employee.view
         protected void SQuestion_Click(object sender, EventArgs e)
         {
             var currentUserDetails = new User();
-            // currentUserDetails = (User)Session["userDetails"];
+            currentUserDetails = (User)Session["userDetails"];
 
-            // for testing
-           // var user = new User();
-
-            currentUserDetails.UserName = "ihegrt85";
-            currentUserDetails.FirstName = "irfan";
-            currentUserDetails.LastName = "irfan";
-            currentUserDetails.Email = "irshtjsdsf@hn";
-            var salt = System.Text.Encoding.UTF8.GetBytes("kjkfj333333kej");
-            var password = System.Text.Encoding.UTF8.GetBytes("12345");
-
-            var hmacMD5 = new HMACMD5(salt);
-            var saltedHash = hmacMD5.ComputeHash(password);
-            currentUserDetails.EncryptedPassword = saltedHash;
-            currentUserDetails.ContactNum = "irfan";
-            currentUserDetails.IsActive = false;
-
-            //
+           
 
             if (currentUserDetails == null)
             {
@@ -127,10 +95,7 @@ namespace Employee.view
             }
 
             // Check whether Questions are same
-            if (Int32.Parse(SQ1.SelectedValue) == Int32.Parse(SQ2.SelectedValue) || Int32.Parse(SQ2.SelectedValue) == Int32.Parse(SQ3.SelectedValue) || Int32.Parse(SQ1.SelectedValue) == Int32.Parse(SQ3.SelectedValue)) {
-                error.Text = "Please Choose Different Questions";
-                return;
-            }
+           
 
             DBConnection DBcon = new DBConnection();
             SqlConnection con = DBcon.CreateConnection();
@@ -147,6 +112,12 @@ namespace Employee.view
                 
             }
 
+            if ( (int.Parse(SQ1.SelectedValue) == int.Parse(SQ2.SelectedValue)) || (int.Parse(SQ2.SelectedValue) == int.Parse(SQ3.SelectedValue)) || (int.Parse(SQ1.SelectedValue) == int.Parse(SQ3.SelectedValue)))
+            {
+                error.Text = "Please Choose Different Questions";
+                return;
+            }
+
             /*get the sessin value from signup page*/
 
 
@@ -161,9 +132,12 @@ namespace Employee.view
             if (inserted) {
                 
                 ProvideAnswers p = new ProvideAnswers();
-            p.insertAnswers(UID, Int32.Parse(SQ1.SelectedValue), ANS1);
-                p.insertAnswers(UID, Int32.Parse(SQ2.SelectedValue), ANS1);
-                p.insertAnswers(UID, Int32.Parse(SQ3.SelectedValue), ANS1);
+                if(int.Parse(SQ1.SelectedValue) != 0)
+                     p.insertAnswers(UID, Int32.Parse(SQ1.SelectedValue), ANS1);
+                if (int.Parse(SQ2.SelectedValue) != 0)
+                    p.insertAnswers(UID, Int32.Parse(SQ2.SelectedValue), ANS2);
+                if (int.Parse(SQ3.SelectedValue) != 0)
+                    p.insertAnswers(UID, Int32.Parse(SQ3.SelectedValue), ANS3);
                     
             }
 

@@ -55,7 +55,7 @@ $(document).ready(function() {
 	
 	<!--SECURITY QUESTION-->
         <asp:DropDownList class="input userrole" runat="server" ID="SQ1" EnableViewState="true"  OnSelectedIndexChanged="SQ_Change" AutoPostBack="true" Width="303px">
-                <asp:ListItem class="input" Value="admin">Select one Question</asp:ListItem>       
+                <asp:ListItem class="input" Value="0">Select one Question</asp:ListItem>       
                 
             </asp:DropDownList>
 
@@ -63,7 +63,7 @@ $(document).ready(function() {
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         
         <asp:DropDownList class="input userrole" runat="server" ID="SQ2" EnableViewState="true"  OnSelectedIndexChanged="SQ_Change" AutoPostBack="true" Width="299px">
-                <asp:ListItem class="input" Value="admin">Select one Question</asp:ListItem>       
+                <asp:ListItem class="input" Value="0">Select one Question</asp:ListItem>       
                 
             </asp:DropDownList>
 
@@ -71,7 +71,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
 
         <asp:DropDownList class="input userrole" runat="server" ID="SQ3" EnableViewState="true"  OnSelectedIndexChanged="SQ_Change" AutoPostBack="true" Width="303px">
-                <asp:ListItem class="input" Value="admin">Select one Question</asp:ListItem>       
+                <asp:ListItem class="input" Value="0">Select one Question</asp:ListItem>       
                 
             </asp:DropDownList>
 
