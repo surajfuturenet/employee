@@ -540,7 +540,7 @@ namespace Employee.Domain
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("@user_name", SqlDbType.VarChar).Value = username;
+                        cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
                         cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
                         cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = fname;
                         cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = lname;
@@ -552,7 +552,7 @@ namespace Employee.Domain
                         {
                             user = new User();
                             user.UserId = int.Parse(reader["user_id"].ToString());
-                            user.UserName = reader["username"].ToString();
+                            user.UserName = reader["user_name"].ToString();
                             user.Email = reader["email"].ToString();
                             user.FirstName = reader["fname"].ToString();
                             user.LastName = reader["lname"].ToString();
