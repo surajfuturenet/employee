@@ -10,6 +10,8 @@ namespace Employee.view
 {
     public partial class UserManagement : System.Web.UI.Page
     {
+        public object DataGridViewAutoSizeColumnsMode { get; private set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -122,13 +124,21 @@ namespace Employee.view
             {
                 email = TextBox4.Text;
             }
+            if((TextBox1.Text == "")&& (TextBox2.Text == "")&& (TextBox3.Text == "")&& (TextBox4.Text == ""))
+            {
+                GridView1.Visible = false;
+            }
+            else
+            {
+                List<User> exlist = usr.searchUsers(uname, email, fname, lname);
 
-            List<User> exlist = usr.searchUsers(uname, email, fname, lname);
 
-
-            GridView1.DataSource = exlist;
-            GridView1.DataBind();
-            GridView1.Visible = true;
+                GridView1.DataSource = exlist;
+                GridView1.DataBind();
+                GridView1.Visible = true;
+                
+            }
+            
 
             Li1.Attributes["class"] = ""; // dis active home page
             profile.Attributes["class"] = ""; // disactive profile tab
@@ -179,7 +189,13 @@ namespace Employee.view
                 if (outval)
                 {
                     GridView1.DataBind();
-                    Response.Redirect("UserManagement.aspx");
+                    User us = (User)Session["userLogIn"];
+                    Session["userLogIn"] = us;
+                    Li1.Attributes["class"] = ""; // dis active home page
+                    profile.Attributes["class"] = ""; // disactive profile tab
+                    userManagement.Attributes["class"] = "active"; // active user management
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowUserManage()", true); // call show User Manage
+                    //Response.Redirect("UserManagement.aspx");
 
                 }
             }
@@ -191,6 +207,10 @@ namespace Employee.view
         {
             Session.Abandon();
             Response.Redirect("Login.aspx");
+        }
+        protected void PendingRecordsGridview_RowDeleting(object sender, EventArgs  e)
+        {
+
         }
     }
 }

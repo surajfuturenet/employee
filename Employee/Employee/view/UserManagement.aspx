@@ -203,25 +203,25 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
                   </div><!--EMAIL-->
         <!--GridView-->
 	 <div class ="gridview" >
-		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="200px" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
-                      PagerStyle-CssClass="pgr" HorizontalAlign="Left" EmptyDataText="No Search Data Found" Visible="true" RowStyle-Height="20px" OnRowCommand="GridView1_OnRowCommand" AllowPaging="true" RowStyle-Wrap="true" RowStyle-Width="10px"  Style="position: static">
+		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
+                      PagerStyle-CssClass="pgr" HorizontalAlign="Left" EmptyDataText="No Search Data Found" Visible="true" RowStyle-Height="20px" OnRowCommand="GridView1_OnRowCommand" AllowPaging="true" RowStyle-Wrap="true" RowStyle-Width="10px" OnRowDeleting="PendingRecordsGridview_RowDeleting">
             <Columns >
                
-                <asp:BoundField  DataField="userId" HeaderText="User Id" ItemStyle-Wrap="true" />
-                <asp:BoundField DataField="userName" HeaderText="User Name" ItemStyle-Wrap="true"/>
-                <asp:BoundField DataField="email" HeaderText="Email" ItemStyle-Wrap="true"/>
-                <asp:BoundField DataField="firstName" HeaderText="First Name" ItemStyle-Wrap="true" />
-                <asp:BoundField DataField="lastName" HeaderText="Last Name"  ItemStyle-Wrap="true"/>
-                <asp:BoundField DataField="contactNum" HeaderText="Contact Number" ItemStyle-Wrap="true" />
-                <asp:BoundField DataField="isActive" HeaderText="isActive" ItemStyle-Wrap="true" />
-                <asp:BoundField DataField="roleName" HeaderText="Role" ItemStyle-Wrap="true"/>
+                <asp:BoundField  DataField="userId" HeaderText="User Id" ItemStyle-Wrap="true" ItemStyle-Width="30px" />
+                <asp:BoundField DataField="userName" HeaderText="User Name" ItemStyle-Wrap="true" ItemStyle-Width="30px"/>
+                <asp:BoundField DataField="email" HeaderText="Email" ItemStyle-Wrap="true" ItemStyle-Width="30px"/>
+                <asp:BoundField DataField="firstName" HeaderText="First Name" ItemStyle-Wrap="true" ItemStyle-Width="30px"/>
+                <asp:BoundField DataField="lastName" HeaderText="Last Name"  ItemStyle-Wrap="true" ItemStyle-Width="30px"/>
+                <asp:BoundField DataField="contactNum" HeaderText="Contact Number" ItemStyle-Wrap="true" ItemStyle-Width="30px" />
+                <asp:BoundField DataField="isActive" HeaderText="isActive" ItemStyle-Wrap="true" ItemStyle-Width="30px" />
+                <asp:BoundField DataField="roleName" HeaderText="Role" ItemStyle-Wrap="true" ItemStyle-Width="30px"/>
                 <%--<asp:CommandField ShowEditButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Width="40px" CommandArgument='<%#Bind("userId ") %>' />
                  <asp:CommandField ShowDeleteButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Width="50px"/>--%>
                  
                 <asp:TemplateField>
                <ItemTemplate>
                    <%--<div style="text-align:left; vertical-align:initial">--%>
-               <asp:Button ID="editbtnview" runat="server" Text="Edit" CommandName="Edit" CommandArgument='<%#Bind("userId") %>' Font-Bold="true" Height="20px" Width="55px" BackColor="#66ccff" BorderStyle="Groove" BorderColor="#000000" >
+               <asp:Button ID="editbtnview" runat="server" Text="Edit" CommandName="Edit" CommandArgument='<%#Bind("userId") %>' Font-Bold="true" Height="20px" Width="50px" BackColor="#66ccff" BorderStyle="Groove" BorderColor="#000000" >
                </asp:Button>
                        <%--</div>--%>
                </ItemTemplate>
@@ -230,7 +230,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
                 <asp:TemplateField>
                <ItemTemplate>
                     <%--<div style="text-align:left; vertical-align:super">--%>
-               <asp:Button ID="deletebtnview" runat="server" Text="Delete" CommandName="Delete" CommandArgument='<%#Bind("userId") %>' Font-Bold="true" Height="20px" Width="55px" BackColor="#66ccff" BorderStyle="Groove" BorderColor="#000000" >
+               <asp:Button ID="deletebtnview" runat="server" Text="Delete" CommandName="Delete" CommandArgument='<%#Bind("userId") %>' Font-Bold="true" Height="20px" Width="50px" BackColor="#66ccff" BorderStyle="Groove" BorderColor="#000000" >
                </asp:Button>
                         <%--</div>--%>
                </ItemTemplate>
