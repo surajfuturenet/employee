@@ -1,6 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/EmployeeMaster.Master" CodeBehind="UserManagement.aspx.cs" Inherits="Employee.view.UserManagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserManagement.aspx.cs" Inherits="Employee.view.UserManagement" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+
 
 <!--META-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -65,8 +71,8 @@ $(document).ready(function() {
         }
     </script>
 
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+</head>
+<body>
 
 <!--WRAPPER-->
 <div id="wrapper">
@@ -74,7 +80,7 @@ $(document).ready(function() {
 	
 
 <!--LOGIN FORM-->
-<form name="profile-form" runat="server" class="profile-form" action="" method="post">
+<form name="profile-form" runat="server" class="profile-form"  method="post">
 
 	<!--HEADER-->
     <div class="header">
@@ -140,7 +146,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         
                
         <asp:TextBox runat="server" id="CnumberTextBox" class="input contact" value="Contact Number" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="CnumberTextBox" ErrorMessage="Invalid Number" ValidationExpression="\(?\d{3}\)?-? *\d{3}-? *-?\d{4}" Font-Size="X-Small" ForeColor="Red"></asp:RegularExpressionValidator>
+onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         <!--CONTACT NUMBER-->
 	<br />
         <asp:Label runat="server" ID="Email" Text ="Email"></asp:Label><br />
@@ -169,15 +175,13 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><asp:
 
         <asp:Label runat="server" ID="Label1"></asp:Label><br />
         
-         <asp:TextBox runat="server" id="TextBox1" class="input firstname" value="First Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+         <asp:TextBox runat="server" id="TextBox1" class="input firstname" placeholder="First Name" ></asp:TextBox>
        </div><!--END FIRSTNAME-->
     <!--LASTNAME-->
               <div class ="rightside">
 
         <asp:Label runat="server" ID="Label2"></asp:Label><br />
-       <asp:TextBox runat="server" id="TextBox2" class="input lastname" value="Last Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+       <asp:TextBox runat="server" id="TextBox2" class="input lastname" placeholder="Last Name" ></asp:TextBox>
 
 
               </div><!--END LASTNAME-->
@@ -187,8 +191,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         <div class ="leftside">
         <asp:Label runat="server" ID="Label3"></asp:Label><br />
      
-        <asp:TextBox runat="server" id="TextBox3" class="input username" value="User Name" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+        <asp:TextBox runat="server" id="TextBox3" class="input username" placeholder="User Name"  ></asp:TextBox>
             </div><!--END USERNAME-->
 	
 	<!--EMAIL-->
@@ -196,27 +199,42 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
        
         <asp:Label runat="server" ID="Label4"></asp:Label><br />
 
-        <asp:TextBox runat="server" id="TextBox4" class="input email" value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
-onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
+        <asp:TextBox runat="server" id="TextBox4" class="input email" placeholder="Email"  ></asp:TextBox>
                   </div><!--EMAIL-->
         <!--GridView-->
-	 <div class =" gridview" >
-		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="616px" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
-                      PagerStyle-CssClass="pgr" HorizontalAlign="Justify" EmptyDataText="No Search Data Found">
+	 <div class ="gridview" >
+		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="510px" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
+                      PagerStyle-CssClass="pgr" HorizontalAlign="Left" EmptyDataText="No Search Data Found" Visible="true" RowStyle-Height="20px" OnRowCommand="GridView1_OnRowCommand">
             <Columns>
                
-                <asp:BoundField ItemStyle-Width="50px" DataField="userId" HeaderText="User Id" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="userName" HeaderText="User Name" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="email" HeaderText="Email" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="firstName" HeaderText="First Name" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="lastName" HeaderText="Last Name" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="contactNum" HeaderText="Contact Number" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="isActive" HeaderText="isActive" />
-                <asp:BoundField ItemStyle-Width="50px" DataField="roleName" HeaderText="Role" />
-                <asp:CommandField ShowEditButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" OnClick =" editClick"/>
-                 <asp:CommandField ShowDeleteButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top"/>
+                <asp:BoundField ItemStyle-Width="20px" DataField="userId" HeaderText="User Id" />
+                <asp:BoundField ItemStyle-Width="20px" DataField="userName" HeaderText="User Name" />
+                <asp:BoundField ItemStyle-Width="20px" DataField="email" HeaderText="Email"/>
+                <asp:BoundField ItemStyle-Width="20px" DataField="firstName" HeaderText="First Name" />
+                <asp:BoundField ItemStyle-Width="20px" DataField="lastName" HeaderText="Last Name" />
+                <asp:BoundField ItemStyle-Width="20px" DataField="contactNum" HeaderText="Contact Number" />
+                <asp:BoundField ItemStyle-Width="10px" DataField="isActive" HeaderText="isActive" />
+                <asp:BoundField ItemStyle-Width="20px" DataField="roleName" HeaderText="Role" />
+                <%--<asp:CommandField ShowEditButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Width="40px" CommandArgument='<%#Bind("userId ") %>' />
+                 <asp:CommandField ShowDeleteButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Width="50px"/>--%>
                  
-                
+                <asp:TemplateField>
+               <ItemTemplate>
+                   <%--<div style="text-align:left; vertical-align:initial">--%>
+               <asp:Button ID="editbtnview" runat="server" Text="Edit" CommandName="Edit" CommandArgument='<%#Bind("userId") %>' Font-Bold="true" Height="20px" Width="55px" BackColor="#66ccff" BorderStyle="Groove" BorderColor="#000000" >
+               </asp:Button>
+                       <%--</div>--%>
+               </ItemTemplate>
+               </asp:TemplateField>
+                    
+                <asp:TemplateField>
+               <ItemTemplate>
+                    <%--<div style="text-align:left; vertical-align:super">--%>
+               <asp:Button ID="deletebtnview" runat="server" Text="Delete" CommandName="Delete" CommandArgument='<%#Bind("userId") %>' Font-Bold="true" Height="20px" Width="55px" BackColor="#66ccff" BorderStyle="Groove" BorderColor="#000000" >
+               </asp:Button>
+                        <%--</div>--%>
+               </ItemTemplate>
+               </asp:TemplateField>
     
             </Columns>
 
@@ -259,5 +277,6 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
 
 <!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
 
-
-</asp:Content>
+</body>
+    
+</html>
