@@ -52,7 +52,7 @@ namespace Employee.view
                     Response.Redirect("~/view/UserManagement.aspx", false);
                 }
                 else {
-                    Session["userLogIn"] = user;
+                    Session["userDetails"] = user;
 
                     Response.Redirect("~/view/EmailVerification.aspx", false);
                 }
