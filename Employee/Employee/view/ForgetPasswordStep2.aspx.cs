@@ -123,7 +123,14 @@ namespace Employee.view
             else
             {
                 Email email = new Email(nuser[0].Email,nuser[0].UserId);
-                int success  = email.SendMail();
+                int success;
+                try {
+                    success = email.SendMail(); }
+                catch (Exception)
+                {
+                    error.Text = "Mail is not Send";
+                    return;
+                }
 
                 if (success == 1)
                 {
