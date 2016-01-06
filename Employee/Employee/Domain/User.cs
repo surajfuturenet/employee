@@ -215,16 +215,17 @@ namespace Employee.Domain
                         cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = fname;
                         cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = lname;
                         cmd.Parameters.Add("@contactnum", SqlDbType.VarChar).Value = contact;
-                        // SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
                         con.Open();
-                        int countVal = cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
+                       
 
-                        // returnParameter.Direction = ParameterDirection.ReturnValue;
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
 
+                        cmd.ExecuteNonQuery();
+                        int countVal = (int)returnParameter.Value;
 
-                        //int countVal = (int)returnParameter.Value;
-
-                        if (countVal == -1)
+                        if (countVal == 1)
                         {
                             return true;
                         }
