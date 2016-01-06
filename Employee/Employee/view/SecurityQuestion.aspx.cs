@@ -16,7 +16,7 @@ namespace Employee.view
     {
 
 
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,7 +37,7 @@ namespace Employee.view
                 Session["update"] = Server.UrlEncode(System.DateTime.Now.ToString());
                 //=============== Page load code =========================
 
-                
+
 
 
                 Answer1.ReadOnly = true;
@@ -49,26 +49,27 @@ namespace Employee.view
                 SqlConnection con = DBcon.CreateConnection();
 
                 SqlCommand cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT q_id, question FROM dbo.SequrityQuestions";
+                cmd.CommandText = "SELECT q_id, question FROM dbo.SequrityQuestions";
 
-            try
+                try
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     int a = 1;
 
-                   while (reader.Read())
+                    while (reader.Read())
                     {
-                        
+
                         ListItem lst = new ListItem(reader.GetString(1), reader.GetInt32(0).ToString());
-                        SQ1.Items.Insert(a,lst);
+                        SQ1.Items.Insert(a, lst);
                         SQ2.Items.Insert(a, lst);
                         SQ3.Items.Insert(a, lst);
                         a++;
                     }
 
                 }
-                catch(Exception ex) {
-                    error.Text= ex.ToString();
+                catch (Exception ex)
+                {
+                    error.Text = ex.ToString();
                 }
 
 
@@ -77,7 +78,7 @@ namespace Employee.view
                 DBcon.CloseConnection();
                 //============== End of Page load code ===================
             }
-           
+
 
 
         }
@@ -87,7 +88,7 @@ namespace Employee.view
             var currentUserDetails = new User();
             currentUserDetails = (User)Session["userDetails"];
 
-           
+
 
             if (currentUserDetails == null)
             {
@@ -95,24 +96,24 @@ namespace Employee.view
             }
 
             // Check whether Questions are same
-           
+
 
             DBConnection DBcon = new DBConnection();
             SqlConnection con = DBcon.CreateConnection();
 
-            
+
 
             string ANS1 = Answer1.Text;
             string ANS2 = Answer2.Text;
             string ANS3 = Answer3.Text;
-            if (UnansweredCount(ANS1,ANS2,ANS3) >= 2)
+            if (UnansweredCount(ANS1, ANS2, ANS3) >= 2)
             {
                 error.Text = "Atleast Answer 2 questions";
                 return;
-                
+
             }
 
-            if ( (int.Parse(SQ1.SelectedValue) == int.Parse(SQ2.SelectedValue)) || (int.Parse(SQ2.SelectedValue) == int.Parse(SQ3.SelectedValue)) || (int.Parse(SQ1.SelectedValue) == int.Parse(SQ3.SelectedValue)))
+            if ((int.Parse(SQ1.SelectedValue) == int.Parse(SQ2.SelectedValue)) || (int.Parse(SQ2.SelectedValue) == int.Parse(SQ3.SelectedValue)) || (int.Parse(SQ1.SelectedValue) == int.Parse(SQ3.SelectedValue)))
             {
                 error.Text = "Please Choose Different Questions";
                 return;
@@ -129,54 +130,41 @@ namespace Employee.view
             int UID = (us.checkUserLogin(currentUserDetails.UserName, currentUserDetails.EncryptedPassword))[0].UserId;
             // SAvE IT TO PROVIDE ANSWERS
 
-            if (inserted) {
-                
+            if (inserted)
+            {
+
                 ProvideAnswers p = new ProvideAnswers();
-                if(int.Parse(SQ1.SelectedValue) != 0)
-                     p.insertAnswers(UID, Int32.Parse(SQ1.SelectedValue), ANS1);
+                if (int.Parse(SQ1.SelectedValue) != 0)
+                    p.insertAnswers(UID, Int32.Parse(SQ1.SelectedValue), ANS1);
                 if (int.Parse(SQ2.SelectedValue) != 0)
                     p.insertAnswers(UID, Int32.Parse(SQ2.SelectedValue), ANS2);
                 if (int.Parse(SQ3.SelectedValue) != 0)
                     p.insertAnswers(UID, Int32.Parse(SQ3.SelectedValue), ANS3);
-                    
+
             }
 
 
             DBcon.CloseConnection();
 
-            Response.Redirect("UserManagement.aspx");
+            us = us.getUserById(UID)[0];
+            currentUserDetails.UserId = UID;
+            Email email = new Email(us.Email, UID);
+            error.Text = "";
+            int success = email.SendMail();
+            Session["userDetails"] = currentUserDetails;
+            Response.Redirect("EmailVerification.aspx");
 
 
         }
 
-       
 
-        protected void AddWithValue(SqlConnection con, int UID,DropDownList SQ, string ANS) {
-            if (ANS.Equals("Answer") != true)
-            {
-                SqlCommand command = new SqlCommand("INSERT INTO ProvideAnswers VALUES(@user_id,@q_id,@answer)", con);
-                command.Parameters.AddWithValue("@user_id", UID);
-                command.Parameters.AddWithValue("@q_id", Int32.Parse(SQ.SelectedValue));
-                command.Parameters.AddWithValue("@answer", ANS);
-
-                try
-                {
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    error.Text = ex.ToString();
-                    // delete last updated
-                }
-            }
-
-        }
 
         protected void SQ_Change(object sender, EventArgs e)
         {
             if (SQ1.SelectedIndex != 0)
                 Answer1.ReadOnly = false;
-            if (SQ1.SelectedIndex == 0) {
+            if (SQ1.SelectedIndex == 0)
+            {
                 Answer1.ReadOnly = true;
             }
             if (SQ2.SelectedIndex != 0)
@@ -194,10 +182,12 @@ namespace Employee.view
 
         }
 
-        protected int UnansweredCount(string s1,string s2,string s3) {
+        protected int UnansweredCount(string s1, string s2, string s3)
+        {
             int c = 0;
-            var strs = new List<string> { "" , "Answer"};
-            if (strs.Contains(s1)) {
+            var strs = new List<string> { "", "Answer" };
+            if (strs.Contains(s1))
+            {
                 c++;
             }
             if (strs.Contains(s2))
