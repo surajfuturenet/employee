@@ -186,5 +186,11 @@ namespace Employee.view
 
             // do something
         }
+
+        protected void Unnamed1_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
+        }
     }
 }

@@ -84,7 +84,7 @@ $(document).ready(function() {
 
 	<!--HEADER-->
     <div class="header">
-    <!--TITLE--><h1><asp:Label runat="server" ID="User"></asp:Label><br />
+    <!--TITLE--><h1><asp:Label runat="server" ID="User"></asp:Label><!--REGISTER BUTTON--><asp:LinkButton runat="server"  class="register" OnClick="Unnamed1_Click" >Log Out</asp:LinkButton><!--END REGISTER BUTTON--><br />
 		 <asp:Label runat="server" ID="error" class="error"></asp:Label>
 	</h1><!--END TITLE-->
 	    
