@@ -4,7 +4,8 @@
 
      <!--META-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Forget Password Step 3 Form</title>
+    <title>Email Verification</title>
+
 
     <!--STYLESHEETS-->
     <link href="/CSS/ResetPassword.css" rel="stylesheet" type="text/css" />
@@ -14,7 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <div id="wrapper">
+   <div id="wrapper">
         <form name="login-form" class="login-form" id="form1" runat="server">
             <div class="header">
                 <h1>
@@ -24,13 +25,14 @@
             <div class="content">
                 <div class="header2">
                     <span>Enter the PIN Nomber which we sent your Mail</span>
-                </div>
-                <asp:TextBox ID="user_name" runat="server" class="input username" value="PIN Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                </div><br />
+                <asp:Label runat="server" ID="error"></asp:Label>
+                <asp:TextBox ID="TextBox" runat="server" class="input username" value="PIN Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
                     onblur="if (this.value=='') this.value = this.defaultValue"  />
             </div>
             <div class="footer">
-                <asp:Button ID="submit" runat="server" Text="Next" class="button" />
-                <asp:Button ID="button" runat="server"  Text="Resend Mail" class="button2" />
+                <asp:Button ID="submit" runat="server" Text="Next" class="button" OnClick="submit_Click" />
+                <asp:Button ID="button" runat="server"  Text="Resend Mail" class="button2" OnClick="button_Click" />
                 
             </div>
         </form>
