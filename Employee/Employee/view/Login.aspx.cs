@@ -52,6 +52,7 @@ namespace Employee.view
                     Response.Redirect("~/view/UserManagement.aspx", false);
                 }
                 else {
+                    user = userList[0];
                     Session["userDetails"] = user;
 
                     Response.Redirect("~/view/EmailVerification.aspx", false);
