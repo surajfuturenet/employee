@@ -203,18 +203,18 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
                   </div><!--EMAIL-->
         <!--GridView-->
 	 <div class ="gridview" >
-		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="510px" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
-                      PagerStyle-CssClass="pgr" HorizontalAlign="Left" EmptyDataText="No Search Data Found" Visible="true" RowStyle-Height="20px" OnRowCommand="GridView1_OnRowCommand">
-            <Columns>
+		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="200px" CssClass= "Grid" AlternatingRowStyle-CssClass="alt"
+                      PagerStyle-CssClass="pgr" HorizontalAlign="Left" EmptyDataText="No Search Data Found" Visible="true" RowStyle-Height="20px" OnRowCommand="GridView1_OnRowCommand" AllowPaging="true" RowStyle-Wrap="true" RowStyle-Width="10px"  Style="position: static">
+            <Columns >
                
-                <asp:BoundField ItemStyle-Width="20px" DataField="userId" HeaderText="User Id" />
-                <asp:BoundField ItemStyle-Width="20px" DataField="userName" HeaderText="User Name" />
-                <asp:BoundField ItemStyle-Width="20px" DataField="email" HeaderText="Email"/>
-                <asp:BoundField ItemStyle-Width="20px" DataField="firstName" HeaderText="First Name" />
-                <asp:BoundField ItemStyle-Width="20px" DataField="lastName" HeaderText="Last Name" />
-                <asp:BoundField ItemStyle-Width="20px" DataField="contactNum" HeaderText="Contact Number" />
-                <asp:BoundField ItemStyle-Width="10px" DataField="isActive" HeaderText="isActive" />
-                <asp:BoundField ItemStyle-Width="20px" DataField="roleName" HeaderText="Role" />
+                <asp:BoundField  DataField="userId" HeaderText="User Id" ItemStyle-Wrap="true" />
+                <asp:BoundField DataField="userName" HeaderText="User Name" ItemStyle-Wrap="true"/>
+                <asp:BoundField DataField="email" HeaderText="Email" ItemStyle-Wrap="true"/>
+                <asp:BoundField DataField="firstName" HeaderText="First Name" ItemStyle-Wrap="true" />
+                <asp:BoundField DataField="lastName" HeaderText="Last Name"  ItemStyle-Wrap="true"/>
+                <asp:BoundField DataField="contactNum" HeaderText="Contact Number" ItemStyle-Wrap="true" />
+                <asp:BoundField DataField="isActive" HeaderText="isActive" ItemStyle-Wrap="true" />
+                <asp:BoundField DataField="roleName" HeaderText="Role" ItemStyle-Wrap="true"/>
                 <%--<asp:CommandField ShowEditButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Width="40px" CommandArgument='<%#Bind("userId ") %>' />
                  <asp:CommandField ShowDeleteButton="True" ButtonType="Link" ControlStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" ItemStyle-VerticalAlign="Top" ItemStyle-Width="50px"/>--%>
                  
@@ -249,7 +249,7 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
     <!--FOOTER-->
     <div class="footer">
     
-        <!--CLEAR BUTTON--><asp:Button id="clear" Text="Clear" class="button" runat="server" /><!--END CLEAR BUTTON-->
+        <!--CLEAR BUTTON--><asp:Button id="clear" Text="Clear" class="button" runat="server" OnClick="clear_Click" /><!--END CLEAR BUTTON-->
     <!--SEARCH BUTTON-->
         <asp:Button id="search" Text="Search" class="button" runat="server" OnClick="search_Click" />
         <!--END SEARCH BUTTON-->

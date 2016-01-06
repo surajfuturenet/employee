@@ -85,26 +85,42 @@ namespace Employee.view
         //search click event
         protected void search_Click(object sender, EventArgs e)
         {
-            string fname = TextBox1.Text;
-            string lname = TextBox2.Text;
-            string uname = TextBox3.Text;
-            string email = TextBox4.Text;
+            string fname;
+            string lname;
+            string uname;
+            string email;
             User usr = new User();
-            if (TextBox1.Text.Contains(""))
+            if (TextBox1.Text == "")
             {
                 fname = null;
             }
-            if (TextBox2.Text.Contains(""))
+            else
+            {
+                fname = TextBox1.Text;
+            }
+            if (TextBox2.Text == "")
             {
                 lname = null;
             }
-            if (TextBox3.Text.Contains(""))
+            else
+            {
+                lname = TextBox2.Text;
+            }
+            if (TextBox3.Text == "")
             {
                 uname = null;
             }
-            if (TextBox4.Text.Contains(""))
+            else
+            {
+                uname = TextBox3.Text;
+            }
+            if (TextBox4.Text == "")
             {
                 email = null;
+            }
+            else
+            {
+                email = TextBox4.Text;
             }
 
             List<User> exlist = usr.searchUsers(uname, email, fname, lname);
@@ -121,6 +137,19 @@ namespace Employee.view
 
 
         }
+        protected void clear_Click(object sender, EventArgs e)
+        {
+            //TextBox1.Text = "";
+            //TextBox2.Text = "";
+            //TextBox3.Text = "";
+            //TextBox4.Text = "";
+            GridView1.Visible = false;
+            Li1.Attributes["class"] = ""; // dis active home page
+            profile.Attributes["class"] = ""; // disactive profile tab
+            userManagement.Attributes["class"] = "active"; // active user management
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowUserManage()", true); // call show User Manage
+
+        }
         //row command
         protected void GridView1_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -128,7 +157,7 @@ namespace Employee.view
             if (e.CommandName == "Edit")
             {
                 int id = int.Parse(e.CommandArgument.ToString());
-                //List<User> list1 = User.getUserById(id);send id to update page after update direct do the this page and rebind the gridview
+                
                 List<User> list3 = user2.getUserById(id);
                 //Session["userDetails"] = list3;
 
