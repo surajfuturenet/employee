@@ -269,7 +269,7 @@ namespace Employee.Domain
                         SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
 
-
+                        cmd.ExecuteNonQuery();
                         int countVal = (int)returnParameter.Value;
 
                         if (countVal == 1)
@@ -317,7 +317,7 @@ namespace Employee.Domain
                         SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
                         returnParameter.Direction = ParameterDirection.ReturnValue;
 
-
+                        cmd.ExecuteNonQuery();
                         int countVal = (int)returnParameter.Value;
 
                         if (countVal == 1)
