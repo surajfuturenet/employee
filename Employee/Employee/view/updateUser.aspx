@@ -1,6 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/EmployeeMaster.Master" CodeBehind="updateUser.aspx.cs" Inherits="Employee.Employee" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="updateUser.aspx.cs" Inherits="Employee.view.updateUser" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+
 
 <!--META-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -18,9 +23,8 @@ $(document).ready(function() {
 });
 </script>
 
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+</head>
+<body>
 
 <!--WRAPPER-->
 <div id="wrapper">
@@ -73,11 +77,11 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox>
         <asp:TextBox runat="server" id="EmailTextBox" class="input email" value="Email" onfocus="if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--END EMAIL-->
 	<br />
-	<!--PASSWORD-->
+	<%--<!--PASSWORD-->
         <asp:Label runat="server" Text="Password"></asp:Label><br />
        <asp:TextBox runat="server" id="PaswordTextBox" class="input password" value="Password" onfocus="this.setAttribute('type','password'); if (this.value==this.defaultValue) this.value = ''"
 onblur="if (this.value==''){ this.value = this.defaultValue;this.setAttribute('type','text');}" ></asp:TextBox><!--END PASSWORD-->
-        <br />
+        <br />--%>
 	<!--CONTACT NUMBER-->
          <asp:Label runat="server" Text="ContactNumber"></asp:Label><br />
                
@@ -116,5 +120,5 @@ onblur="if (this.value=='') this.value = this.defaultValue" ></asp:TextBox><!--C
 
 <!--GRADIENT--><div class="gradient"></div><!--END GRADIENT-->
 
-
-</asp:Content>
+</body>
+</html>

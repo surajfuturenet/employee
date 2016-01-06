@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Employee {
+namespace Employee.view {
     
     
-    public partial class Employee {
+    public partial class updateUser {
         
         /// <summary>
         /// UnameTextBox control.
@@ -47,15 +47,6 @@ namespace Employee {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EmailTextBox;
-        
-        /// <summary>
-        /// PaswordTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PaswordTextBox;
         
         /// <summary>
         /// CnumberTextBox control.
