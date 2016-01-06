@@ -20,11 +20,15 @@ namespace Employee.view
         {
 
         }
+
+        /* Access the button click in signup.aspx */
         protected void submit_Click(object sender, EventArgs e)
         {
             if (passwordConfirmation())
             {
                 var user = new User();
+
+                /* Check Username and Email Unique */
                 if (user.checkUsernameUnique(UnameTextBox.Text) && user.checkEmailUnique(Email.Text))
                 {
                     submit_Data();
@@ -48,6 +52,7 @@ namespace Employee.view
             }
         }
 
+        /* check password Confirmation valid */
         protected bool passwordConfirmation()
         {
             var pass1 = PaswordTextBox.Text;
@@ -60,6 +65,8 @@ namespace Employee.view
                 return true;
             }
         }
+
+        /* Send data to the next page */
         protected void submit_Data()
         {
             var user = new User();
@@ -79,6 +86,7 @@ namespace Employee.view
 
         }
 
+        /* clean form text box data */
         protected void cleanForm()
         {
             UnameTextBox.Text = "";
