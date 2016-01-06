@@ -211,19 +211,20 @@ namespace Employee.Domain
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.Add("@user_name", SqlDbType.VarChar).Value = username;
+                        cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
                         cmd.Parameters.Add("@fname", SqlDbType.VarChar).Value = fname;
                         cmd.Parameters.Add("@lname", SqlDbType.VarChar).Value = lname;
-                        cmd.Parameters.Add("@contactno", SqlDbType.VarChar).Value = contact;
+                        cmd.Parameters.Add("@contactnum", SqlDbType.VarChar).Value = contact;
+                        // SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
                         con.Open();
-                        cmd.ExecuteNonQuery();
-                        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
-                        returnParameter.Direction = ParameterDirection.ReturnValue;
+                        int countVal = cmd.ExecuteNonQuery();
+
+                        // returnParameter.Direction = ParameterDirection.ReturnValue;
 
 
-                        int countVal = (int)returnParameter.Value;
+                        //int countVal = (int)returnParameter.Value;
 
-                        if (countVal == 1)
+                        if (countVal == -1)
                         {
                             return true;
                         }
@@ -369,6 +370,7 @@ namespace Employee.Domain
                             user.FirstName = reader["fname"].ToString();
                             user.LastName = reader["lname"].ToString();
                             user.ContactNum = reader["contact_num"].ToString();
+                            user.RoleId = int.Parse(reader["role_id"].ToString());
                             UserList.Add(user);
                         }
                         return UserList;
@@ -636,6 +638,30 @@ namespace Employee.Domain
                         return true;
                     }
 
+                }
+            }
+        }
+
+        //Activate user
+        public Boolean activateUser(int userId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE [User] SET isActive = @bool WHERE user_id = @userId";
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@bool", true);
+
+                    con.Open();
+                    int check = cmd.ExecuteNonQuery();
+                    con.Close();
+                    if (check == 1)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
                 }
             }
         }
