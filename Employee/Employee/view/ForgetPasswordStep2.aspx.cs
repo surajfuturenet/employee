@@ -89,17 +89,17 @@ namespace Employee.view
                 {
                     if (a == 1)
                     {
-                        if (!TextBox1.Text.Equals( reader.GetString(1)))
+                        if (TextBox1.Text.Equals( reader.GetString(1)))
                             correct++;
                     }
                     if (a == 2)
                     {
-                        if (!TextBox2.Text.Equals(reader.GetString(1)))
+                        if (TextBox2.Text.Equals(reader.GetString(1)))
                             correct++;
                     }
                     if (a == 3)
                     {
-                        if (!TextBox3.Text.Equals(reader.GetString(1)))
+                        if (TextBox3.Text.Equals(reader.GetString(1)))
                             correct++;
                     }
 
