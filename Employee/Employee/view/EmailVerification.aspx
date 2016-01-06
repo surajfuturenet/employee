@@ -21,13 +21,18 @@
                 <h1>
                     Verify Email
                 </h1>
+
+                
             </div>
             <div class="content">
                 <div class="header2">
-                    <span>Enter the PIN Nomber which we sent your Mail</span>
+                    <h2>
+                    Your Account is not Activated
+                </h2>
+                    <span>To Activate Your Account, Enter the PIN Number which we sent your Mail</span>
                 </div><br />
                 <asp:Label runat="server" ID="error"></asp:Label>
-                <asp:TextBox ID="TextBox" runat="server" class="input username" value="PIN Nomber" onfocus="if (this.value==this.defaultValue) this.value = ''"
+                <asp:TextBox ID="TextBox" runat="server" class="input username" value="PIN Number" onfocus="if (this.value==this.defaultValue) this.value = ''"
                     onblur="if (this.value=='') this.value = this.defaultValue"  />
             </div>
             <div class="footer">
