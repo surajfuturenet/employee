@@ -33,7 +33,7 @@ namespace Employee.Controller
                 Random rnd = new Random();
                 int pin = rnd.Next(1, 10000);
                 string pinText = pin.ToString();
-                string body = "Your PIN nomber is" + pinText;
+                string body = "Your PIN nomber is : " + pinText;
 
                 var smtp = new SmtpClient
                 {

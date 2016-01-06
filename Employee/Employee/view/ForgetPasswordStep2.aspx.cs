@@ -66,7 +66,7 @@ namespace Employee.view
             List<User> nuser = us.retrieveEmail("", us.Email);
             int UID = nuser[0].UserId;
             // int UID = 2;   // User Id hard coded
-            int CheckError = 1;
+            int correct = 0;
             int Answered = 0;
             Answered = CountAnswered(TextBox1.Text,TextBox2.Text,TextBox3.Text);
             if (Answered < 2) {
@@ -89,18 +89,18 @@ namespace Employee.view
                 {
                     if (a == 1)
                     {
-                        if (!TextBox1.Text.Equals( reader.GetString(1)))
-                            CheckError *= 0;
+                        if (TextBox1.Text.Equals( reader.GetString(1)))
+                            correct++;
                     }
                     if (a == 2)
                     {
-                        if (!TextBox2.Text.Equals(reader.GetString(1)))
-                            CheckError *= 0;
+                        if (TextBox2.Text.Equals(reader.GetString(1)))
+                            correct++;
                     }
                     if (a == 3)
                     {
-                        if (!TextBox3.Text.Equals(reader.GetString(1)))
-                            CheckError *= 0;
+                        if (TextBox3.Text.Equals(reader.GetString(1)))
+                            correct++;
                     }
 
 
@@ -115,7 +115,7 @@ namespace Employee.view
 
             DBcon.CloseConnection();
 
-            if (CheckError == 0)
+            if (correct < 2)
             {
                 error.Text = "Wrong Answer";
                 return;
@@ -123,7 +123,14 @@ namespace Employee.view
             else
             {
                 Email email = new Email(nuser[0].Email,nuser[0].UserId);
-                int success  = email.SendMail();
+                int success;
+                try {
+                    success = email.SendMail(); }
+                catch (Exception)
+                {
+                    error.Text = "Mail is not Send";
+                    return;
+                }
 
                 if (success == 1)
                 {
