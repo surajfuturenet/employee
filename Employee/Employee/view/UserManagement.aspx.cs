@@ -13,28 +13,46 @@ namespace Employee.view
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            int UserTYpe = 0; // retrieve the user type
-            User.Text = "User Name";
-            if(UserTYpe == 1)   // for Nomal user
+            if (!IsPostBack)
             {
-                userManagement.Visible= false;
-                tabs_2.Visible = false;
+                //Your page load code here...
+
+                User us = (User)Session["userLogIn"];
+
+                if (us == null)
+                {
+                    Response.Redirect("/view/error.aspx");
+                }
+
+                us = us.getUserById(us.UserId)[0];
+
+                int UserTYpe = us.RoleId; // retrieve the user type
+                User.Text = us.UserName;
+                if (UserTYpe == 1)   // for Nomal user
+                {
+                    userManagement.Visible = false;
+                    tabs_2.Visible = false;
+                }
+
+                if (UserTYpe == 2)  // for Admin
+                {
+                    userManagement.Visible = true;
+                    //tabs_2.Visible = true;
+                }
+
+
+
+                EmailTextBox.ReadOnly = true;
+                UnameTextBox.ReadOnly = true;
+
+                // get the User and Update
+                UnameTextBox.Text = us.UserName;
+                FnameTextBox.Text = us.FirstName;
+                LnameTextBox.Text = us.LastName;
+                EmailTextBox.Text = us.Email;
+                CnumberTextBox.Text = us.ContactNum;
+
             }
-
-            if (UserTYpe == 0)  // for Admin
-            {
-                userManagement.Visible = true;
-                //tabs_2.Visible = true;
-            }
-
-            //User.Text = "User";
-
-            EmailTextBox.ReadOnly = true;
-            UnameTextBox.ReadOnly = true;
-
-            // get the User and Update
-           
-
         }
 
         protected void update_Click(object sender, EventArgs e)
