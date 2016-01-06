@@ -665,5 +665,53 @@ namespace Employee.Domain
                 }
             }
         }
+
+        /* check is active field before login */
+        public bool checkIsActive(int userId)
+        {
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EmployeeDBConnectionString"].ConnectionString))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("CheckIsActive", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add("@user_id", SqlDbType.Int).Value = userId;
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        SqlParameter returnParameter = cmd.Parameters.Add("@return", SqlDbType.Int);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+                        cmd.ExecuteNonQuery();
+
+                        int countVal = (int)returnParameter.Value;
+
+                        if (countVal == 1)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+
+                        }
+
+                    }
+                }
+
+
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+
+        }
     }
 }
