@@ -66,7 +66,7 @@ namespace Employee.view
             List<User> nuser = us.retrieveEmail("", us.Email);
             int UID = nuser[0].UserId;
             // int UID = 2;   // User Id hard coded
-            int CheckError = 1;
+            int correct = 0;
             int Answered = 0;
             Answered = CountAnswered(TextBox1.Text,TextBox2.Text,TextBox3.Text);
             if (Answered < 2) {
@@ -90,17 +90,17 @@ namespace Employee.view
                     if (a == 1)
                     {
                         if (!TextBox1.Text.Equals( reader.GetString(1)))
-                            CheckError *= 0;
+                            correct++;
                     }
                     if (a == 2)
                     {
                         if (!TextBox2.Text.Equals(reader.GetString(1)))
-                            CheckError *= 0;
+                            correct++;
                     }
                     if (a == 3)
                     {
                         if (!TextBox3.Text.Equals(reader.GetString(1)))
-                            CheckError *= 0;
+                            correct++;
                     }
 
 
@@ -115,7 +115,7 @@ namespace Employee.view
 
             DBcon.CloseConnection();
 
-            if (CheckError == 0)
+            if (correct < 2)
             {
                 error.Text = "Wrong Answer";
                 return;
