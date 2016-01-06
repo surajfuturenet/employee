@@ -21,35 +21,46 @@ namespace Employee.view
         {
 
         }
-
+        /* Login.aspx button click access */
         protected void login_Click(object sender, EventArgs e)
         {
             check(UnameTextBox.Text, Password.Text);
         }
 
+        /* check user name and password Athentication */
         protected void check(string userName, string password)
         {
-
+            
             var user = new User();
             byte[] encryptPassword = PasswordEncryption.encryptPassword(password);
+
+            /* calling Athentication in Users.cs */
             var userList = user.checkUserLogin(userName, encryptPassword);
 
+            /* check User list have 1 value */
             if (userList.Count > 1)
             {
                 InfoLabel.Text = "Invalid User";
             }
             else if (userList.Count == 1)
             {
-                user = userList[0];
-                Session["userLogIn"] = user;
+                if (user.checkIsActive(userList[0].UserId))
+                {
+                    user = userList[0];
+                    Session["userLogIn"] = user;
 
-                Response.Redirect("~/view/UserManagement.aspx", false);
+                    Response.Redirect("~/view/UserManagement.aspx", false);
+                }
+                else {
+                    Session["userLogIn"] = user;
+
+                    Response.Redirect("~/view/EmailVerification.aspx", false);
+                }
             }
             else {
-                InfoLabel.Text = "User not Exist Please Register";
+                InfoLabel.Text = "Invalid User name or password";
             }
         }
-
-
+        
     }
 }
