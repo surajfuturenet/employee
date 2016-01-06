@@ -57,7 +57,30 @@ namespace Employee.view
 
         protected void update_Click(object sender, EventArgs e)
         {
-            error.Text = "Data Sccussfully Updated";
+            User us = (User)Session["userLogIn"];
+
+            if (us == null)
+            {
+                Response.Redirect("/view/error.aspx");
+            }
+
+            us = us.getUserById(us.UserId)[0];
+            try
+            {
+                us.updateUserData(us.UserName, FnameTextBox.Text, LnameTextBox.Text, CnumberTextBox.Text);
+                // Update the profile
+                error.Text = "Data Succussfully Updated";
+            }
+            catch (Exception ex)
+            {
+                error.Text = "Updating failed";
+            }
+
+            Li1.Attributes["class"] = ""; // dis active home page
+            profile.Attributes["class"] = "active"; // disactive profile tab
+            userManagement.Attributes["class"] = ""; // active user management
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowProfile()", true); // call show Profile
+
         }
         //search click event
         protected void search_Click(object sender, EventArgs e)
@@ -91,7 +114,10 @@ namespace Employee.view
             GridView1.DataBind();
             GridView1.Visible = true;
 
-
+            Li1.Attributes["class"] = ""; // dis active home page
+            profile.Attributes["class"] = ""; // disactive profile tab
+            userManagement.Attributes["class"] = "active"; // active user management
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "ShowUserManage()", true); // call show User Manage
 
 
         }
